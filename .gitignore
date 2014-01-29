@@ -1,6 +1,15 @@
+# Ignore all dotfiles...
+.*
+# except for .gitignore
+!.gitignore
+!.classpath
+!.project
+
+# Ignore all classfiles
 *.class
 
-# Package Files #
-*.jar
-*.war
-*.ear
+# Ignore bin
+bin
+*/lib/*
+*/target/*
+dependency-reduced-pom.xml
