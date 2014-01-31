@@ -1,0 +1,20 @@
+package net.dylanhansch.lavahub.command;
+
+import org.bukkit.ChatColor;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
+
+public class HelpCommand implements CommandExecutor{
+	
+	@Override
+	public boolean onCommand(CommandSender sender, Command cmd, String commandLable, String[] args){
+		Player player = (Player) sender;
+		if(commandLable.equalsIgnoreCase("help")){
+			player.sendMessage(ChatColor.GOLD + "Currently being used as setup example. Sorry.");
+		}
+		return false;
+	}
+
+}
