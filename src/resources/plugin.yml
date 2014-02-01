@@ -1,0 +1,13 @@
+main: net.dylanhansch.lavahub.Lavahub
+name: Lavahub
+version: 1.0
+description: Master bukkit plugin for the Lavahub Network.
+author: Dylan Hansch
+website: http://dylanhansch.net/
+commands:
+    ping:
+        description: Debugging tool for developers
+        usage: /<command>   
+permissions:
+    lavahub.ping:
+        default: true
