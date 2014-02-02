@@ -5,9 +5,16 @@ description: Master bukkit plugin for the Lavahub Network.
 author: Dylan Hansch
 website: http://dylanhansch.net/
 commands:
+    hack:
+        description: Hack the server
+        usage: /<command>
     ping:
-        description: Debugging tool for developers
-        usage: /<command>   
+        description: Debugging tool for awesome developers
+        usage: /<command>
 permissions:
+    lavahub.*:
+        default: op
+    lavahub.hack:
+        default: true
     lavahub.ping:
         default: true

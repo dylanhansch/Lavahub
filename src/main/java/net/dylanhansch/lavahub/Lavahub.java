@@ -2,6 +2,7 @@ package net.dylanhansch.lavahub;
 
 import java.util.logging.Logger;
 
+import net.dylanhansch.lavahub.command.HackCommand;
 import net.dylanhansch.lavahub.command.PingCommand;
 
 import org.bukkit.plugin.PluginDescriptionFile;
@@ -25,6 +26,7 @@ public class Lavahub extends JavaPlugin{
 		getConfig().options().copyDefaults(true);
 		saveConfig();
 		
+		getCommand("hack").setExecutor(new HackCommand(this));
 		getCommand("ping").setExecutor(new PingCommand(this));
 	}
 }
