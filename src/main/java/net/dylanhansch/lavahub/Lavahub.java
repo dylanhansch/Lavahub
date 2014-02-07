@@ -2,13 +2,13 @@ package net.dylanhansch.lavahub;
 
 import java.util.logging.Logger;
 
-import net.dylanhansch.lavahub.command.HackCommand;
-import net.dylanhansch.lavahub.command.PingCommand;
-
+import org.bukkit.ChatColor;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class Lavahub extends JavaPlugin{
+public class Lavahub extends JavaPlugin {
 	public final Logger logger = Logger.getLogger("Minecraft");
 	public static Lavahub plugin;
 	
@@ -26,7 +26,15 @@ public class Lavahub extends JavaPlugin{
 		getConfig().options().copyDefaults(true);
 		saveConfig();
 		
-		getCommand("hack").setExecutor(new HackCommand(this));
-		getCommand("ping").setExecutor(new PingCommand(this));
+	}
+	
+	// Ping Command
+	public boolean onCommand(CommandSender sender, Command cmd, String commandLable, String[] args){
+		if(commandLable.equalsIgnoreCase("ping")){
+			sender.sendMessage(getConfig().getString("ping-format"));
+		}else if(commandLable.equalsIgnoreCase("hack")){
+			sender.sendMessage(ChatColor.GREEN + "No hacky hacky!");
+		}
+		return true;
 	}
 }
