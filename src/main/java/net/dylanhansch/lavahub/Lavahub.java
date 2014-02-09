@@ -2,9 +2,9 @@ package net.dylanhansch.lavahub;
 
 import java.util.logging.Logger;
 
-import org.bukkit.ChatColor;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
+import net.dylanhansch.lavahub.command.HackCommand;
+import net.dylanhansch.lavahub.command.PingCommand;
+
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -26,15 +26,9 @@ public class Lavahub extends JavaPlugin {
 		getConfig().options().copyDefaults(true);
 		saveConfig();
 		
+		getCommand("hack").setExecutor(new HackCommand());
+		getCommand("ping").setExecutor(new PingCommand());
+		
 	}
 	
-	// Ping Command
-	public boolean onCommand(CommandSender sender, Command cmd, String commandLable, String[] args){
-		if(commandLable.equalsIgnoreCase("ping")){
-			sender.sendMessage(getConfig().getString("ping-format"));
-		}else if(commandLable.equalsIgnoreCase("hack")){
-			sender.sendMessage(ChatColor.GREEN + "No hacky hacky!");
-		}
-		return true;
-	}
 }
