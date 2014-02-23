@@ -16,7 +16,7 @@ public class ClearInventoryCommand implements CommandExecutor {
 		Player player = (Player) sender;
 		if(args.length == 0){
 			if(!player.hasPermission("lavahub.clearinventory")) {
-				player.sendMessage(ChatColor.RED + "You do not have permission!");
+				player.sendMessage(ChatColor.DARK_RED + "You do not have access to that command.");
 				return true;
 			} else {
 				player.getInventory().clear();
@@ -31,15 +31,19 @@ public class ClearInventoryCommand implements CommandExecutor {
 		}
 		if(args.length == 1){
 			if(!player.hasPermission("lavahub.clearinventory.others")){
-				player.sendMessage(ChatColor.RED + "You do not have permission!");
+				player.sendMessage(ChatColor.DARK_RED + "You do not have access to that command.");
 				return true;
 			} else {
 				target.getInventory().clear();
-				target.sendMessage(ChatColor.GOLD + "Your inventory was cleared by " + player.getName() + ".");
+				target.sendMessage(ChatColor.GOLD + "Your inventory was cleared by " + player.getDisplayName() + ".");
 				player.sendMessage(ChatColor.GOLD + "You have cleared " + target.getName() + ChatColor.GOLD  + "'s inventory.");
 				return true;
 			}
 			
+		}
+		if(args.length >= 2){
+			player.sendMessage(ChatColor.RED + "Too many arguments!");
+			return false;
 		}
 		return false;
 		
