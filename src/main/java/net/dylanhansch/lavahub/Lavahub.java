@@ -2,6 +2,7 @@ package net.dylanhansch.lavahub;
 
 import java.util.logging.Logger;
 
+import net.dylanhansch.lavahub.command.ClearInventoryCommand;
 import net.dylanhansch.lavahub.command.HackCommand;
 import net.dylanhansch.lavahub.command.PingCommand;
 
@@ -26,6 +27,7 @@ public class Lavahub extends JavaPlugin {
 		getConfig().options().copyDefaults(true);
 		saveConfig();
 		
+		getCommand("clearinventory").setExecutor(new ClearInventoryCommand());
 		getCommand("hack").setExecutor(new HackCommand());
 		getCommand("ping").setExecutor(new PingCommand());
 		

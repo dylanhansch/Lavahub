@@ -5,6 +5,10 @@ description: Master bukkit plugin for the Lavahub Network.
 author: Dylan Hansch
 website: http://dylanhansch.net/
 commands:
+    clearinventory:
+        description: Clears player inventory
+        usage: /<command> <player>
+        aliases: [ci, clear]
     hack:
         description: Hack the server
         usage: /<command>
@@ -13,6 +17,10 @@ commands:
         usage: /<command>
 permissions:
     lavahub.*:
+        default: op
+    lavahub.clearinventory:
+        default: op
+    lavahub.clearinventory.others:
         default: op
     lavahub.hack:
         default: true
