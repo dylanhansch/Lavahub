@@ -6,15 +6,22 @@ author: Dylan Hansch
 website: http://dylanhansch.net/
 commands:
     clearinventory:
-        description: Clears player inventory
+        description: Clear player inventory
         usage: /<command> <player>
         aliases: [ci, clear]
+    gamemode:
+        description: Change player gamemode
+        usage: /<command> <mode> <player>
+        aliases: [gm]
     hack:
         description: Hack the server
         usage: /<command>
     ping:
         description: Debugging tool for awesome developers
         usage: /<command>
+    time:
+        description: Set world time
+        usage: /<command> (day|noon|night)
 permissions:
     lavahub.*:
         default: op
@@ -22,7 +29,13 @@ permissions:
         default: op
     lavahub.clearinventory.others:
         default: op
+    lavahub.gamemode:
+        default: op
+    lavahub.gamemode.others:
+        default: op
     lavahub.hack:
         default: true
     lavahub.ping:
         default: true
+    lavahub.time:
+        default: op
