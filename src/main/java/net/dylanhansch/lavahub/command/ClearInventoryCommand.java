@@ -13,6 +13,13 @@ public class ClearInventoryCommand implements CommandExecutor {
 	public static Lavahub plugin;
 	
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLable, String[] args){
+		if(!(sender instanceof Player)){
+			Player target = Bukkit.getServer().getPlayer(args[0]);
+			target.getInventory().clear();
+			target.sendMessage(ChatColor.GOLD + "Your inventory was cleared by Console.");
+			sender.sendMessage(ChatColor.GOLD + "You cleared " + target.getName() + ChatColor.GOLD + "'s inventory.");
+			return true;
+		}
 		Player player = (Player) sender;
 		if(args.length == 0){
 			if(!player.hasPermission("lavahub.clearinventory")) {
@@ -39,7 +46,6 @@ public class ClearInventoryCommand implements CommandExecutor {
 				player.sendMessage(ChatColor.GOLD + "You have cleared " + target.getName() + ChatColor.GOLD  + "'s inventory.");
 				return true;
 			}
-			
 		}
 		if(args.length >= 2){
 			player.sendMessage(ChatColor.RED + "Too many arguments!");
