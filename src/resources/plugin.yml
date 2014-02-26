@@ -19,9 +19,12 @@ commands:
     ping:
         description: Debugging tool for awesome developers
         usage: /<command>
+    say:
+        description: Send message as console
+        usage: /<command> <message>
     time:
         description: Set world time
-        usage: /<command> (day|noon|night)
+        usage: /<command> <day|noon|night>
 permissions:
     lavahub.*:
         default: op
@@ -37,5 +40,7 @@ permissions:
         default: true
     lavahub.ping:
         default: true
+    lavahub.say:
+        default: op
     lavahub.time:
         default: op

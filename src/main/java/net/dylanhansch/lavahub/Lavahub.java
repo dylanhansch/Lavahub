@@ -6,6 +6,7 @@ import net.dylanhansch.lavahub.command.ClearInventoryCommand;
 import net.dylanhansch.lavahub.command.GamemodeCommand;
 import net.dylanhansch.lavahub.command.HackCommand;
 import net.dylanhansch.lavahub.command.PingCommand;
+import net.dylanhansch.lavahub.command.SayCommand;
 import net.dylanhansch.lavahub.command.TimeCommand;
 
 import org.bukkit.plugin.PluginDescriptionFile;
@@ -26,13 +27,13 @@ public class Lavahub extends JavaPlugin {
 		PluginDescriptionFile pdfFile = this.getDescription();
 		this.logger.info(pdfFile.getName() + " has been enabled.");
 		
-		getConfig().options().copyDefaults(true);
-		saveConfig();
+		Config.setup(getConfig());
 		
 		getCommand("clearinventory").setExecutor(new ClearInventoryCommand());
 		getCommand("gamemode").setExecutor(new GamemodeCommand());
 		getCommand("hack").setExecutor(new HackCommand());
 		getCommand("ping").setExecutor(new PingCommand());
+		getCommand("say").setExecutor(new SayCommand());
 		getCommand("time").setExecutor(new TimeCommand());
 	}
 	
