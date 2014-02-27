@@ -17,7 +17,7 @@ public class ClearInventoryCommand implements CommandExecutor {
 			Player target = Bukkit.getServer().getPlayer(args[0]);
 			target.getInventory().clear();
 			target.sendMessage(ChatColor.GOLD + "Your inventory was cleared by Console.");
-			sender.sendMessage(ChatColor.GOLD + "You cleared " + target.getName() + ChatColor.GOLD + "'s inventory.");
+			sender.sendMessage(ChatColor.GOLD + "You cleared " + target.getDisplayName() + ChatColor.GOLD + "'s inventory.");
 			return true;
 		}
 		Player player = (Player) sender;
@@ -43,7 +43,7 @@ public class ClearInventoryCommand implements CommandExecutor {
 			} else {
 				target.getInventory().clear();
 				target.sendMessage(ChatColor.GOLD + "Your inventory was cleared by " + player.getDisplayName() + ".");
-				player.sendMessage(ChatColor.GOLD + "You have cleared " + target.getName() + ChatColor.GOLD  + "'s inventory.");
+				player.sendMessage(ChatColor.GOLD + "You have cleared " + target.getDisplayName() + ChatColor.GOLD  + "'s inventory.");
 				return true;
 			}
 		}
