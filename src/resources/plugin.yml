@@ -5,6 +5,14 @@ description: Master bukkit plugin for the Lavahub Network.
 author: Dylan Hansch
 website: http://dylanhansch.net/
 commands:
+    away:
+        description: Mark as away-from-keyboard
+        usage: /<command> <reason>
+        aliases: [afk]
+    action:
+        description: Send action message
+        usage: /<command> <message>
+        aliases: [me]
     clearinventory:
         description: Clear player inventory
         usage: /<command> <player>
@@ -27,6 +35,10 @@ commands:
         usage: /<command> <day|noon|night>
 permissions:
     lavahub.*:
+        default: op
+    lavahub.away:
+        default: op
+    lavahub.action:
         default: op
     lavahub.clearinventory:
         default: op

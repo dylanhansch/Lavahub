@@ -2,6 +2,8 @@ package net.dylanhansch.lavahub;
 
 import java.util.logging.Logger;
 
+import net.dylanhansch.lavahub.command.ActionCommand;
+import net.dylanhansch.lavahub.command.AwayCommand;
 import net.dylanhansch.lavahub.command.ClearInventoryCommand;
 import net.dylanhansch.lavahub.command.GamemodeCommand;
 import net.dylanhansch.lavahub.command.HackCommand;
@@ -29,6 +31,8 @@ public class Lavahub extends JavaPlugin {
 		
 		Config.setup(getConfig());
 		
+		getCommand("away").setExecutor(new AwayCommand());
+		getCommand("action").setExecutor(new ActionCommand());
 		getCommand("clearinventory").setExecutor(new ClearInventoryCommand());
 		getCommand("gamemode").setExecutor(new GamemodeCommand());
 		getCommand("hack").setExecutor(new HackCommand());
