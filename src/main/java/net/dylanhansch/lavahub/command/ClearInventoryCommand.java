@@ -14,11 +14,25 @@ public class ClearInventoryCommand implements CommandExecutor {
 	
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLable, String[] args){
 		if(!(sender instanceof Player)){
-			Player target = Bukkit.getServer().getPlayer(args[0]);
-			target.getInventory().clear();
-			target.sendMessage(ChatColor.GOLD + "Your inventory was cleared by Console.");
-			sender.sendMessage(ChatColor.GOLD + "You cleared " + target.getDisplayName() + ChatColor.GOLD + "'s inventory.");
-			return true;
+			if(args.length == 0){
+				sender.sendMessage(ChatColor.RED + "Not executable by console!");
+				return true;
+			}
+			Player targetPlayer = Bukkit.getServer().getPlayer(args[0]);
+			if(targetPlayer == null){
+				sender.sendMessage(ChatColor.RED + "That player is not online!");
+				return true;
+			}
+			if(args.length == 1){
+				targetPlayer.getInventory().clear();
+				targetPlayer.sendMessage(ChatColor.GOLD + "Your inventory was cleared by Console.");
+				sender.sendMessage(ChatColor.GOLD + "You cleared " + ChatColor.RESET + targetPlayer.getDisplayName() + ChatColor.GOLD + "'s inventory.");
+				return true;
+			}
+			if(args.length >= 2){
+				sender.sendMessage(ChatColor.RED + "Too many arguments!");
+				return true;
+			}
 		}
 		Player player = (Player) sender;
 		if(args.length == 0){
@@ -27,7 +41,7 @@ public class ClearInventoryCommand implements CommandExecutor {
 				return true;
 			} else {
 				player.getInventory().clear();
-				player.sendMessage(ChatColor.GOLD + "You have cleared your inventory.");
+				player.sendMessage(ChatColor.GOLD + "You cleared your inventory.");
 				return true;
 			}
 		}
@@ -42,8 +56,8 @@ public class ClearInventoryCommand implements CommandExecutor {
 				return true;
 			} else {
 				targetPlayer.getInventory().clear();
-				targetPlayer.sendMessage(ChatColor.GOLD + "Your inventory was cleared by " + player.getDisplayName() + ".");
-				player.sendMessage(ChatColor.GOLD + "You have cleared " + targetPlayer.getDisplayName() + ChatColor.GOLD  + "'s inventory.");
+				targetPlayer.sendMessage(ChatColor.GOLD + "Your inventory was cleared by " + ChatColor.RESET + player.getDisplayName() + ChatColor.GOLD + ".");
+				player.sendMessage(ChatColor.GOLD + "You cleared " + ChatColor.RESET + targetPlayer.getDisplayName() + ChatColor.GOLD  + "'s inventory.");
 				return true;
 			}
 		}

@@ -14,6 +14,24 @@ public class TimeCommand implements CommandExecutor {
 	public static Lavahub plugin;
 	
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLable, String[] args){
+		if(!(sender instanceof Player)){
+			World targetWorld = Bukkit.getServer().getWorld(args[1]);
+			if(args[0].equalsIgnoreCase("day")){
+				targetWorld.setTime(0);
+				Bukkit.broadcastMessage(ChatColor.GOLD + "Console changed the time to " + ChatColor.RED + "day" + ChatColor.GOLD + " in '" + ChatColor.RED + targetWorld.getName() + ChatColor.GOLD + "'.");
+				return true;
+			}
+			if(args[0].equalsIgnoreCase("noon")){
+				targetWorld.setTime(6000);
+				Bukkit.broadcastMessage(ChatColor.GOLD + "Console changed the time to " + ChatColor.RED + "noon" + ChatColor.GOLD + " in '" + ChatColor.RED + targetWorld.getName() + ChatColor.GOLD + "'.");
+				return true;
+			}
+			if(args[0].equalsIgnoreCase("night")){
+				targetWorld.setTime(14000);
+				Bukkit.broadcastMessage(ChatColor.GOLD + "Console changed the time to " + ChatColor.RED + "night" + ChatColor.GOLD + " in '" + ChatColor.RED + targetWorld.getName() + ChatColor.GOLD + "'.");
+				return true;
+			}
+		}
 		Player player = (Player) sender;
 		World world = player.getWorld();
 		if(args.length == 0){

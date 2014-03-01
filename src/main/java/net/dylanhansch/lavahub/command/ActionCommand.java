@@ -13,6 +13,10 @@ public class ActionCommand implements CommandExecutor{
 	public static Lavahub plugin;
 	
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLable, String[] args){
+		if(!(sender instanceof Player)){
+			sender.sendMessage(ChatColor.RED + "Not executable by console!");
+			return true;
+		}
 		Player player = (Player) sender;
 		if(args.length == 0){
 			if(!sender.hasPermission("lavahub.action")){
