@@ -49,7 +49,15 @@ public class TimeCommand implements CommandExecutor {
 			}
 			
 		}
-		if(args.length >= 2){
+		if(args.length == 2){
+			if(!player.hasPermission("lavahub.time")){
+				player.sendMessage(ChatColor.DARK_RED + "You do not have access to that command.");
+				return true;
+			} else {
+				
+			}
+		}
+		if(args.length >= 3){
 			if(!player.hasPermission("lavahub.time")){
 				player.sendMessage(ChatColor.DARK_RED + "You do not have access to that command.");
 				return true;
