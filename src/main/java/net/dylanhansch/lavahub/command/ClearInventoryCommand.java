@@ -31,8 +31,8 @@ public class ClearInventoryCommand implements CommandExecutor {
 				return true;
 			}
 		}
-		Player target = Bukkit.getServer().getPlayer(args[0]);
-		if(target == null){
+		Player targetPlayer = Bukkit.getServer().getPlayer(args[0]);
+		if(targetPlayer == null){
 			player.sendMessage(ChatColor.RED + "That player is not online!");
 			return true;
 		}
@@ -41,9 +41,9 @@ public class ClearInventoryCommand implements CommandExecutor {
 				player.sendMessage(ChatColor.DARK_RED + "You do not have access to that command.");
 				return true;
 			} else {
-				target.getInventory().clear();
-				target.sendMessage(ChatColor.GOLD + "Your inventory was cleared by " + player.getDisplayName() + ".");
-				player.sendMessage(ChatColor.GOLD + "You have cleared " + target.getDisplayName() + ChatColor.GOLD  + "'s inventory.");
+				targetPlayer.getInventory().clear();
+				targetPlayer.sendMessage(ChatColor.GOLD + "Your inventory was cleared by " + player.getDisplayName() + ".");
+				player.sendMessage(ChatColor.GOLD + "You have cleared " + targetPlayer.getDisplayName() + ChatColor.GOLD  + "'s inventory.");
 				return true;
 			}
 		}
