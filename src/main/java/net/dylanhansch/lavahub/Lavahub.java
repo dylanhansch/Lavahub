@@ -7,6 +7,7 @@ import net.dylanhansch.lavahub.command.ClearInventoryCommand;
 import net.dylanhansch.lavahub.command.GamemodeCommand;
 import net.dylanhansch.lavahub.command.HackCommand;
 import net.dylanhansch.lavahub.command.PingCommand;
+import net.dylanhansch.lavahub.command.RawmsgCommand;
 import net.dylanhansch.lavahub.command.SayCommand;
 import net.dylanhansch.lavahub.command.TimeCommand;
 
@@ -35,6 +36,7 @@ public class Lavahub extends JavaPlugin {
 		getCommand("gamemode").setExecutor(new GamemodeCommand());
 		getCommand("hack").setExecutor(new HackCommand());
 		getCommand("ping").setExecutor(new PingCommand());
+		getCommand("rawmsg").setExecutor(new RawmsgCommand());
 		getCommand("say").setExecutor(new SayCommand());
 		getCommand("time").setExecutor(new TimeCommand());
 	}

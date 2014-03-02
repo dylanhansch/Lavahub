@@ -23,6 +23,9 @@ commands:
     ping:
         description: Debugging tool for awesome developers
         usage: /<command>
+    rawmsg:
+        description: Send raw message
+        usage: /<command> <message>
     say:
         description: Send message as console
         usage: /<command> <message>
@@ -46,6 +49,8 @@ permissions:
         default: true
     lavahub.ping:
         default: true
+    lavahub.rawmsg:
+        default: op
     lavahub.say:
         default: op
     lavahub.time:
