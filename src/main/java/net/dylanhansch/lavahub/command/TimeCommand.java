@@ -11,24 +11,28 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class TimeCommand implements CommandExecutor {
-	public static Lavahub plugin;
-	
+	private final Lavahub plugin;
+
+	public TimeCommand(Lavahub plugin) {
+		this.plugin = plugin;
+	}
+
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLable, String[] args){
 		if(!(sender instanceof Player)){
-			World targetWorld = Bukkit.getServer().getWorld(args[1]);
+			World targetWorld = plugin.getServer().getWorld(args[1]);
 			if(args[0].equalsIgnoreCase("day")){
 				targetWorld.setTime(0);
-				Bukkit.broadcastMessage(ChatColor.GOLD + "Console changed the time to " + ChatColor.RED + "day" + ChatColor.GOLD + " in '" + ChatColor.RED + targetWorld.getName() + ChatColor.GOLD + "'.");
+				plugin.getServer().broadcastMessage(ChatColor.GOLD + "Console changed the time to " + ChatColor.RED + "day" + ChatColor.GOLD + " in '" + ChatColor.RED + targetWorld.getName() + ChatColor.GOLD + "'.");
 				return true;
 			}
 			if(args[0].equalsIgnoreCase("noon")){
 				targetWorld.setTime(6000);
-				Bukkit.broadcastMessage(ChatColor.GOLD + "Console changed the time to " + ChatColor.RED + "noon" + ChatColor.GOLD + " in '" + ChatColor.RED + targetWorld.getName() + ChatColor.GOLD + "'.");
+				plugin.getServer().broadcastMessage(ChatColor.GOLD + "Console changed the time to " + ChatColor.RED + "noon" + ChatColor.GOLD + " in '" + ChatColor.RED + targetWorld.getName() + ChatColor.GOLD + "'.");
 				return true;
 			}
 			if(args[0].equalsIgnoreCase("night")){
 				targetWorld.setTime(14000);
-				Bukkit.broadcastMessage(ChatColor.GOLD + "Console changed the time to " + ChatColor.RED + "night" + ChatColor.GOLD + " in '" + ChatColor.RED + targetWorld.getName() + ChatColor.GOLD + "'.");
+				plugin.getServer().broadcastMessage(ChatColor.GOLD + "Console changed the time to " + ChatColor.RED + "night" + ChatColor.GOLD + " in '" + ChatColor.RED + targetWorld.getName() + ChatColor.GOLD + "'.");
 				return true;
 			}
 		}
@@ -50,24 +54,24 @@ public class TimeCommand implements CommandExecutor {
 			} else {
 				if(args[0].equalsIgnoreCase("day")){
 					world.setTime(0);
-					Bukkit.broadcastMessage(player.getDisplayName() + ChatColor.GOLD + " changed the time to " + ChatColor.RED + "day" + ChatColor.GOLD + ".");
+					plugin.getServer().broadcastMessage(player.getDisplayName() + ChatColor.GOLD + " changed the time to " + ChatColor.RED + "day" + ChatColor.GOLD + ".");
 					return true;
 				}
 				if(args[0].equalsIgnoreCase("noon")){
 					world.setTime(6000);
-					Bukkit.broadcastMessage(player.getDisplayName() + ChatColor.GOLD + " changed the time to " + ChatColor.RED + "noon" + ChatColor.GOLD + ".");
+					plugin.getServer().broadcastMessage(player.getDisplayName() + ChatColor.GOLD + " changed the time to " + ChatColor.RED + "noon" + ChatColor.GOLD + ".");
 					return true;
 				}
 				if(args[0].equalsIgnoreCase("night")){
 					world.setTime(14000);
-					Bukkit.broadcastMessage(player.getDisplayName() + ChatColor.GOLD + " changed the time to " + ChatColor.RED + "night" + ChatColor.GOLD + ".");
+					plugin.getServer().broadcastMessage(player.getDisplayName() + ChatColor.GOLD + " changed the time to " + ChatColor.RED + "night" + ChatColor.GOLD + ".");
 					return true;
 				}
 				
 			}
 			
 		}
-		World targetWorld = Bukkit.getServer().getWorld(args[1]);
+		World targetWorld = plugin.getServer().getWorld(args[1]);
 		if(args.length == 2){
 			if(!player.hasPermission("lavahub.time")){
 				player.sendMessage(ChatColor.DARK_RED + "You do not have access to that command.");
@@ -75,17 +79,17 @@ public class TimeCommand implements CommandExecutor {
 			} else {
 				if(args[0].equalsIgnoreCase("day")){
 					targetWorld.setTime(0);
-					Bukkit.broadcastMessage(player.getDisplayName() + ChatColor.GOLD + " changed the time to " + ChatColor.RED + "day" + ChatColor.GOLD + " in '" + ChatColor.RED + targetWorld.getName() + ChatColor.GOLD + "'.");
+					plugin.getServer().broadcastMessage(player.getDisplayName() + ChatColor.GOLD + " changed the time to " + ChatColor.RED + "day" + ChatColor.GOLD + " in '" + ChatColor.RED + targetWorld.getName() + ChatColor.GOLD + "'.");
 					return true;
 				}
 				if(args[0].equalsIgnoreCase("noon")){
 					targetWorld.setTime(6000);
-					Bukkit.broadcastMessage(player.getDisplayName() + ChatColor.GOLD + " changed the time to " + ChatColor.RED + "noon" + ChatColor.GOLD + " in '" + ChatColor.RED + targetWorld.getName() + ChatColor.GOLD + "'.");
+					plugin.getServer().broadcastMessage(player.getDisplayName() + ChatColor.GOLD + " changed the time to " + ChatColor.RED + "noon" + ChatColor.GOLD + " in '" + ChatColor.RED + targetWorld.getName() + ChatColor.GOLD + "'.");
 					return true;
 				}
 				if(args[0].equalsIgnoreCase("night")){
 					targetWorld.setTime(14000);
-					Bukkit.broadcastMessage(player.getDisplayName() + ChatColor.GOLD + " changed the time to " + ChatColor.RED + "night" + ChatColor.GOLD + " in '" + ChatColor.RED + targetWorld.getName() + ChatColor.GOLD + "'.");
+					plugin.getServer().broadcastMessage(player.getDisplayName() + ChatColor.GOLD + " changed the time to " + ChatColor.RED + "night" + ChatColor.GOLD + " in '" + ChatColor.RED + targetWorld.getName() + ChatColor.GOLD + "'.");
 					return true;
 				}
 			}
