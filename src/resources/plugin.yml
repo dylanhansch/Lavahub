@@ -29,6 +29,12 @@ commands:
     say:
         description: Send message as console
         usage: /<command> <message>
+    setspawn:
+        description: Set server spawn
+        usage: /<command>
+    spawn:
+        description: Teleport to server spawn
+        usage: /<command> <player>
     time:
         description: Set world time
         usage: /<command> <day|noon|night>
@@ -52,6 +58,10 @@ permissions:
     lavahub.rawmsg:
         default: op
     lavahub.say:
+        default: op
+    lavahub.setspawn:
+        default: op
+    lavahub.spawn:
         default: op
     lavahub.time:
         default: op
