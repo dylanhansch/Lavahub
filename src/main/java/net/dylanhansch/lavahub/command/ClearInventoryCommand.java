@@ -10,7 +10,11 @@ import org.bukkit.entity.Player;
 import net.dylanhansch.lavahub.Lavahub;
 
 public class ClearInventoryCommand implements CommandExecutor {
-	public static Lavahub plugin;
+	private final Lavahub plugin;
+
+	public ClearInventoryCommand(Lavahub plugin) {
+		this.plugin = plugin;
+	}
 	
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLable, String[] args){
 		if(!(sender instanceof Player)){
@@ -31,7 +35,7 @@ public class ClearInventoryCommand implements CommandExecutor {
 			}
 			if(args.length >= 2){
 				sender.sendMessage(ChatColor.RED + "Too many arguments!");
-				return true;
+				return false;
 			}
 		}
 		Player player = (Player) sender;
@@ -45,7 +49,7 @@ public class ClearInventoryCommand implements CommandExecutor {
 				return true;
 			}
 		}
-		Player targetPlayer = Bukkit.getServer().getPlayer(args[0]);
+		Player targetPlayer = plugin.getServer().getPlayer(args[0]);
 		if(targetPlayer == null){
 			player.sendMessage(ChatColor.RED + "That player is not online!");
 			return true;

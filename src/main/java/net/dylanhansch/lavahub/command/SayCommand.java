@@ -9,8 +9,12 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
 public class SayCommand implements CommandExecutor{
-	public static Lavahub plugin;
-	
+	private final Lavahub plugin;
+
+	public SayCommand(Lavahub plugin) {
+		this.plugin = plugin;
+	}
+
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLable, String[] args){
 		if(args.length == 0){
 			if(!sender.hasPermission("lavahub.say")){
@@ -33,7 +37,7 @@ public class SayCommand implements CommandExecutor{
 					
 					message.append(part);
 				}
-				Bukkit.getServer().broadcastMessage(ChatColor.DARK_PURPLE + "Console> " + ChatColor.LIGHT_PURPLE + message.toString());
+				plugin.getServer().broadcastMessage(String.format("\u00A73Console> \u00A7d%s", message.toString()));
 				return true;
 			}
 			

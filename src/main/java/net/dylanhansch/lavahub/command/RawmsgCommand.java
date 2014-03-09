@@ -9,8 +9,12 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
 public class RawmsgCommand implements CommandExecutor {
-	public static Lavahub plugin;
-	
+	private final Lavahub plugin;
+
+	public RawmsgCommand(Lavahub plugin) {
+		this.plugin = plugin;
+	}
+
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLable, String[] args){
 		if(args.length == 0){
 			if(!sender.hasPermission("lavahub.rawmsg")){
@@ -30,10 +34,9 @@ public class RawmsgCommand implements CommandExecutor {
 				for (String part : args){
 					if(!message.toString().equals(""))
 						message.append(" ");
-					
 					message.append(part);
 				}
-				Bukkit.getServer().broadcastMessage(message.toString());
+				plugin.getServer().broadcastMessage(message.toString());
 				return true;
 			}
 			

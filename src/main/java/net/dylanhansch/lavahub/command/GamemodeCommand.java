@@ -11,11 +11,15 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class GamemodeCommand implements CommandExecutor {
-	public static Lavahub plugin;
-	
+	private final Lavahub plugin;
+
+	public GamemodeCommand(Lavahub plugin) {
+		this.plugin = plugin;
+	}
+
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLable, String[] args){
 		if(!(sender instanceof Player)){
-			Player targetPlayer = Bukkit.getServer().getPlayer(args[1]);
+			Player targetPlayer = plugin.getServer().getPlayer(args[1]);
 			if(targetPlayer == null){
 				sender.sendMessage(ChatColor.RED + "That player is not online!");
 				return true;
@@ -110,7 +114,7 @@ public class GamemodeCommand implements CommandExecutor {
 				}
 			}
 		}
-		Player targetPlayer = Bukkit.getServer().getPlayer(args[1]);
+		Player targetPlayer = plugin.getServer().getPlayer(args[1]);
 		if(args.length == 2){
 			if(!player.hasPermission("lavahub.gamemode")){
 				player.sendMessage(ChatColor.DARK_RED + "You do not have access to that command.");

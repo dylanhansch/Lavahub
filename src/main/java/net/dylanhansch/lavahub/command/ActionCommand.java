@@ -10,14 +10,13 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class ActionCommand implements CommandExecutor{
-	public static Lavahub plugin;
+	private final Lavahub plugin;
+
+	public ActionCommand(Lavahub plugin) {
+		this.plugin = plugin;
+	}
 	
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLable, String[] args){
-		if(!(sender instanceof Player)){
-			sender.sendMessage(ChatColor.RED + "Not executable by console!");
-			return true;
-		}
-		Player player = (Player) sender;
 		if(args.length == 0){
 			if(!sender.hasPermission("lavahub.action")){
 				sender.sendMessage(ChatColor.DARK_RED + "You do not have access to that command.");
@@ -39,7 +38,10 @@ public class ActionCommand implements CommandExecutor{
 					
 					message.append(part);
 				}
-				Bukkit.getServer().broadcastMessage("* " + player.getDisplayName() + " " + message.toString());
+				String name = sender.getName();
+				if (sender instanceof Player)
+					name = ((Player) sender).getDisplayName();
+				plugin.getServer().broadcastMessage(String.format("* %s %s", name, message));
 				return true;
 			}
 			
