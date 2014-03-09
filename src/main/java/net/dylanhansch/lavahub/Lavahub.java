@@ -40,7 +40,9 @@ public class Lavahub extends JavaPlugin {
                 getServer().getWorld(getConfig().getString("spawn.world")),
                 getConfig().getDouble("spawn.x"),
                 getConfig().getDouble("spawn.y"),
-                getConfig().getDouble("spawn.z")
+                getConfig().getDouble("spawn.z"),
+                (float) getConfig().getDouble("spawn.yaw"),
+                (float) getConfig().getDouble("spawn.pitch")
             );
 	}
 

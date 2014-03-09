@@ -26,10 +26,13 @@ public class SetSpawnCommand implements CommandExecutor{
                 player.sendMessage(ChatColor.DARK_RED + "You do not have access to that command.");
                 return true;
             } else {
-                plugin.getConfig().set("spawn.world", player.getLocation().getWorld());
+                plugin.getConfig().set("spawn.world", player.getLocation().getWorld().getName());
                 plugin.getConfig().set("spawn.x", player.getLocation().getX());
                 plugin.getConfig().set("spawn.y", player.getLocation().getY());
                 plugin.getConfig().set("spawn.z", player.getLocation().getZ());
+                plugin.getConfig().set("spawn.yaw", player.getLocation().getYaw());
+                plugin.getConfig().set("spawn.pitch", player.getLocation().getPitch());
+                plugin.saveConfig();
                 player.sendMessage(ChatColor.GOLD + "Set server spawn.");
                 return true;
             }

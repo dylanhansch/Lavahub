@@ -38,7 +38,7 @@ public class SpawnCommand implements CommandExecutor{
                 player.sendMessage(ChatColor.DARK_RED + "You do not have access to that command.");
                 return true;
             } else {
-                player.teleport(plugin.getSpawn());
+                targetPlayer.teleport(plugin.getSpawn());
                 targetPlayer.sendMessage(ChatColor.GOLD + "You got teleported to spawn by " + ChatColor.RESET +  player.getDisplayName());
                 return true;
             }

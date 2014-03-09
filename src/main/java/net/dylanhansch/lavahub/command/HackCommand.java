@@ -8,10 +8,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
 public class HackCommand implements CommandExecutor {
-	private final Lavahub plugin;
-
 	public HackCommand(Lavahub plugin) {
-		this.plugin = plugin;
 	}
 
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLable, String[] args){

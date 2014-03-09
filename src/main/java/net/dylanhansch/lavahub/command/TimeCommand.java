@@ -2,7 +2,6 @@ package net.dylanhansch.lavahub.command;
 
 import net.dylanhansch.lavahub.Lavahub;
 
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.World;
 import org.bukkit.command.Command;
