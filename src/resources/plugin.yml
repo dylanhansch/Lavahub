@@ -17,12 +17,6 @@ commands:
         description: Change player gamemode
         usage: /<command> <mode> <player>
         aliases: [gm]
-    hack:
-        description: Hack the server
-        usage: /<command>
-    ping:
-        description: Debugging tool for awesome developers
-        usage: /<command>
     rawmsg:
         description: Send raw message
         usage: /<command> <message>
@@ -51,10 +45,6 @@ permissions:
         default: op
     lavahub.gamemode.others:
         default: op
-    lavahub.hack:
-        default: true
-    lavahub.ping:
-        default: true
     lavahub.rawmsg:
         default: op
     lavahub.say:
