@@ -6,17 +6,18 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 
-public class SayCommand implements CommandExecutor{
+public class ActionCommand implements CommandExecutor{
 	private final Lavahub plugin;
 
-	public SayCommand(Lavahub plugin) {
+	public ActionCommand(Lavahub plugin) {
 		this.plugin = plugin;
 	}
-
+	
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLable, String[] args){
 		if(args.length == 0){
-			if(!sender.hasPermission("lavahub.say")){
+			if(!sender.hasPermission("lavahub.action")){
 				sender.sendMessage(ChatColor.DARK_RED + "You do not have access to that command.");
 				return true;
 			} else {
@@ -25,7 +26,7 @@ public class SayCommand implements CommandExecutor{
 			}
 		}
 		if(args.length >= 1){
-			if(!sender.hasPermission("lavahub.say")){
+			if(!sender.hasPermission("lavahub.action")){
 				sender.sendMessage(ChatColor.DARK_RED + "You do not have access to that command.");
 				return true;
 			} else {
@@ -36,7 +37,10 @@ public class SayCommand implements CommandExecutor{
 					
 					message.append(part);
 				}
-				plugin.getServer().broadcastMessage(String.format("\u00A73Console> \u00A7d%s", message.toString()));
+				String name = sender.getName();
+				if (sender instanceof Player)
+					name = ((Player) sender).getDisplayName();
+				plugin.getServer().broadcastMessage(String.format("* %s %s", name, message));
 				return true;
 			}
 			
@@ -44,4 +48,5 @@ public class SayCommand implements CommandExecutor{
 		return false;
 	}
 	
+
 }
