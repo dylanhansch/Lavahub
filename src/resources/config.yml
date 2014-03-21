@@ -5,3 +5,7 @@ spawn:
   z: 0.0
   yaw: 90.0
   pitch: 22.0
+spawnonjoin: false
+speedboost: false
+jumpboost: false
+resetpotions: false

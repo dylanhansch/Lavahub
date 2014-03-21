@@ -3,6 +3,7 @@ package net.dylanhansch.lavahub;
 import net.dylanhansch.lavahub.command.ActionCommand;
 import net.dylanhansch.lavahub.command.ClearInventoryCommand;
 import net.dylanhansch.lavahub.command.GamemodeCommand;
+import net.dylanhansch.lavahub.command.LavahubCommand;
 import net.dylanhansch.lavahub.command.RawmsgCommand;
 import net.dylanhansch.lavahub.command.SayCommand;
 import net.dylanhansch.lavahub.command.SetSpawnCommand;
@@ -10,9 +11,15 @@ import net.dylanhansch.lavahub.command.SpawnCommand;
 import net.dylanhansch.lavahub.command.TimeCommand;
 
 import org.bukkit.Location;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 
-public class Lavahub extends JavaPlugin {
+public class Lavahub extends JavaPlugin implements Listener {
 
 	@Override
 	public void onDisable() {
@@ -21,9 +28,11 @@ public class Lavahub extends JavaPlugin {
 	@Override
 	public void onEnable() {
 		saveDefaultConfig();
+		getServer().getPluginManager().registerEvents(this, this);
 		getCommand("action").setExecutor(new ActionCommand(this));
 		getCommand("clearinventory").setExecutor(new ClearInventoryCommand(this));
 		getCommand("gamemode").setExecutor(new GamemodeCommand(this));
+		getCommand("lavahub").setExecutor(new LavahubCommand(this));
 		getCommand("rawmsg").setExecutor(new RawmsgCommand(this));
 		getCommand("say").setExecutor(new SayCommand(this));
 		getCommand("time").setExecutor(new TimeCommand(this));
@@ -41,6 +50,37 @@ public class Lavahub extends JavaPlugin {
                 (float) getConfig().getDouble("spawn.pitch")
             );
 	}
-
+	
+	@EventHandler
+	public boolean onPlayerJoin(PlayerJoinEvent event){
+		Player player = event.getPlayer();
+		if(this.getConfig().getBoolean("resetpotions") == true){
+			for(PotionEffect effect : player.getActivePotionEffects())
+			{
+			    player.removePotionEffect(effect.getType());
+			}
+		}else{
+			return false;
+		}
+		
+		if(this.getConfig().getBoolean("spawnonjoin") == true){
+			player.teleport(getSpawn());
+		}else{
+			return false;
+		}
+		if(this.getConfig().getBoolean("speedboost") == true){
+			player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 10000000, 2));
+		}else{
+			return false;
+		}
+		if(this.getConfig().getBoolean("jumpboost") == true){
+			player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 10000000, 2));
+			player.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 10000000, 254));
+			
+		}else{
+			return false;
+		}
+		return false;
+	}
+		
 }
-
