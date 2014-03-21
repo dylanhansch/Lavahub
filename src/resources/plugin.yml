@@ -17,6 +17,9 @@ commands:
         description: Change player gamemode
         usage: /<command> <mode> <player>
         aliases: [gm]
+    lavahub:
+        description: Reload Lavahub configuration from disk
+        usage: /<command>
     rawmsg:
         description: Send raw message
         usage: /<command> <message>
@@ -44,6 +47,8 @@ permissions:
     lavahub.gamemode:
         default: op
     lavahub.gamemode.others:
+        default: op
+    lavahub.reload:
         default: op
     lavahub.rawmsg:
         default: op
