@@ -36,7 +36,7 @@ public class SayCommand implements CommandExecutor{
 					
 					message.append(part);
 				}
-				plugin.getServer().broadcastMessage(String.format("\u00A73Console> \u00A7d%s", message.toString()));
+				plugin.getServer().broadcastMessage(String.format("\u00A75Console> \u00A7d%s", message.toString()));
 				return true;
 			}
 			
