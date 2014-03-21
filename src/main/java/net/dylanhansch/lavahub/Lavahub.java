@@ -10,11 +10,13 @@ import net.dylanhansch.lavahub.command.SetSpawnCommand;
 import net.dylanhansch.lavahub.command.SpawnCommand;
 import net.dylanhansch.lavahub.command.TimeCommand;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
@@ -54,26 +56,25 @@ public class Lavahub extends JavaPlugin implements Listener {
 	@EventHandler
 	public boolean onPlayerJoin(PlayerJoinEvent event){
 		Player player = event.getPlayer();
-		if(this.getConfig().getBoolean("resetpotions") == true){
-			for(PotionEffect effect : player.getActivePotionEffects())
-			{
+		if(this.getConfig().getBoolean("hub-features.resetpotions") == true){
+			for(PotionEffect effect : player.getActivePotionEffects()){
 			    player.removePotionEffect(effect.getType());
 			}
 		}else{
 			return false;
 		}
-		
+			
 		if(this.getConfig().getBoolean("spawnonjoin") == true){
 			player.teleport(getSpawn());
 		}else{
 			return false;
 		}
-		if(this.getConfig().getBoolean("speedboost") == true){
+		if(this.getConfig().getBoolean("hub-features.speedboost") == true){
 			player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 10000000, 2));
 		}else{
 			return false;
 		}
-		if(this.getConfig().getBoolean("jumpboost") == true){
+		if(this.getConfig().getBoolean("hub-features.jumpboost") == true){
 			player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 10000000, 2));
 			player.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 10000000, 254));
 			
@@ -82,5 +83,38 @@ public class Lavahub extends JavaPlugin implements Listener {
 		}
 		return false;
 	}
+	@EventHandler
+	public boolean onPlayerRespawn(PlayerRespawnEvent event){
+		final Player player = event.getPlayer();
 		
+		event.setRespawnLocation(getSpawn());
+		
+        if(this.getConfig().getBoolean("hub-features.speedboost") == true){
+        	Bukkit.getScheduler().scheduleSyncDelayedTask( this, new Runnable(){
+
+				@Override
+				public void run() {
+					player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 10000000, 2));
+				}
+        		
+        	},1 );
+        }else{
+            return false;
+        }
+        if(this.getConfig().getBoolean("hub-features.jumpboost") == true){
+        	Bukkit.getScheduler().scheduleSyncDelayedTask( this, new Runnable(){
+
+				@Override
+				public void run() {
+		            player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 10000000, 2));
+		            player.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 10000000, 254));
+				}
+        		
+        	},1 );
+        }else{
+            return false;
+        }
+        return false;
+	}
+	
 }

@@ -5,7 +5,8 @@ spawn:
   z: 0.0
   yaw: 90.0
   pitch: 22.0
+hub-features:
+  speedboost: false
+  jumpboost: false
+  resetpotions: false
 spawnonjoin: false
-speedboost: false
-jumpboost: false
-resetpotions: false

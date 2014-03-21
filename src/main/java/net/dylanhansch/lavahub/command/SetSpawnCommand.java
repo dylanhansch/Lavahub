@@ -33,7 +33,7 @@ public class SetSpawnCommand implements CommandExecutor{
                 plugin.getConfig().set("spawn.yaw", player.getLocation().getYaw());
                 plugin.getConfig().set("spawn.pitch", player.getLocation().getPitch());
                 plugin.saveConfig();
-                player.sendMessage(ChatColor.GOLD + "Set server spawn.");
+                player.sendMessage(ChatColor.GOLD + "Spawn set.");
                 return true;
             }
         }
