@@ -76,7 +76,6 @@ public class Lavahub extends JavaPlugin implements Listener {
 		}
 		if(this.getConfig().getBoolean("hub-features.jumpboost") == true){
 			player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 10000000, 2));
-			player.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 10000000, 254));
 			
 		}else{
 			return false;
@@ -90,7 +89,7 @@ public class Lavahub extends JavaPlugin implements Listener {
 		event.setRespawnLocation(getSpawn());
 		
         if(this.getConfig().getBoolean("hub-features.speedboost") == true){
-        	Bukkit.getScheduler().scheduleSyncDelayedTask( this, new Runnable(){
+        	Bukkit.getScheduler().scheduleSyncDelayedTask(this, new Runnable(){
 
 				@Override
 				public void run() {
@@ -102,12 +101,11 @@ public class Lavahub extends JavaPlugin implements Listener {
             return false;
         }
         if(this.getConfig().getBoolean("hub-features.jumpboost") == true){
-        	Bukkit.getScheduler().scheduleSyncDelayedTask( this, new Runnable(){
+        	Bukkit.getScheduler().scheduleSyncDelayedTask(this, new Runnable(){
 
 				@Override
 				public void run() {
 		            player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 10000000, 2));
-		            player.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 10000000, 254));
 				}
         		
         	},1 );
