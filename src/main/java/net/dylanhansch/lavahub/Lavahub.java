@@ -9,6 +9,7 @@ import net.dylanhansch.lavahub.command.SayCommand;
 import net.dylanhansch.lavahub.command.SetSpawnCommand;
 import net.dylanhansch.lavahub.command.SpawnCommand;
 import net.dylanhansch.lavahub.command.TimeCommand;
+import net.dylanhansch.lavahub.command.WeatherCommand;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -40,6 +41,7 @@ public class Lavahub extends JavaPlugin implements Listener {
 		getCommand("time").setExecutor(new TimeCommand(this));
 		getCommand("spawn").setExecutor(new SpawnCommand(this));
 		getCommand("setspawn").setExecutor(new SetSpawnCommand(this));
+		getCommand("weather").setExecutor(new WeatherCommand(this));
 	}
 
 	public Location getSpawn() {
@@ -63,7 +65,6 @@ public class Lavahub extends JavaPlugin implements Listener {
 		}else{
 			return false;
 		}
-			
 		if(this.getConfig().getBoolean("spawnonjoin") == true){
 			player.teleport(getSpawn());
 		}else{

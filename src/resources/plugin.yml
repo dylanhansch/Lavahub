@@ -35,6 +35,9 @@ commands:
     time:
         description: Set world time
         usage: /<command> <day|noon|night>
+    weather:
+        description: Change the weather
+        usage: /<command> <storm/rain|clear>
 permissions:
     lavahub.*:
         default: op
@@ -59,4 +62,6 @@ permissions:
     lavahub.spawn:
         default: op
     lavahub.time:
+        default: op
+    lavahub.weather:
         default: op
