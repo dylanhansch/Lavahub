@@ -21,13 +21,14 @@ public class WeatherCommand implements CommandExecutor {
 			World targetWorld = plugin.getServer().getWorld(args[1]);
 			if(args[0].equalsIgnoreCase("rain") || args[0].equalsIgnoreCase("storm")){
 				targetWorld.setStorm(true);
-				sender.sendMessage(ChatColor.GOLD + "Weather changed to " + ChatColor.RED + "Storm " + ChatColor.GOLD + "in " + ChatColor.RED + targetWorld.getName() + ChatColor.GOLD + ".");
+				targetWorld.setWeatherDuration(12000);
+				sender.sendMessage(ChatColor.GOLD + "Weather changed to " + ChatColor.RED + "storm " + ChatColor.GOLD + "in " + ChatColor.RED + targetWorld.getName() + ChatColor.GOLD + ".");
 				return true;
 			}
-			if(args[0].equalsIgnoreCase("clear")){
+			if(args[0].equalsIgnoreCase("clear") || args[0].equalsIgnoreCase("sun")){
 				targetWorld.setStorm(false);
-				targetWorld.setWeatherDuration(50);
-				sender.sendMessage(ChatColor.GOLD + "Weather changed to " + ChatColor.RED + "Clear " + ChatColor.GOLD + "in " + ChatColor.RED + targetWorld.getName() + ChatColor.GOLD + ".");
+				targetWorld.setWeatherDuration(12000);
+				sender.sendMessage(ChatColor.GOLD + "Weather changed to " + ChatColor.RED + "clear " + ChatColor.GOLD + "in " + ChatColor.RED + targetWorld.getName() + ChatColor.GOLD + ".");
 				return true;
 			}
 		}
@@ -49,12 +50,14 @@ public class WeatherCommand implements CommandExecutor {
 			} else {
 				if(args[0].equalsIgnoreCase("rain") || args[0].equalsIgnoreCase("storm")){
 					world.setStorm(true);
-					player.sendMessage(ChatColor.GOLD + "Weather changed to " + ChatColor.RED + "Storm" + ChatColor.GOLD + ".");
+					world.setWeatherDuration(12000);
+					player.sendMessage(ChatColor.GOLD + "Weather changed to " + ChatColor.RED + "storm" + ChatColor.GOLD + ".");
 					return true;
 				}
-				if(args[0].equalsIgnoreCase("clear")){
+				if(args[0].equalsIgnoreCase("clear") || args[0].equalsIgnoreCase("sun")){
 					world.setStorm(false);
-					player.sendMessage(ChatColor.GOLD + "Weather changed to " + ChatColor.RED + "Clear" + ChatColor.GOLD + ".");
+					world.setWeatherDuration(12000);
+					player.sendMessage(ChatColor.GOLD + "Weather changed to " + ChatColor.RED + "clear" + ChatColor.GOLD + ".");
 					return true;
 				}
 			}
@@ -67,12 +70,14 @@ public class WeatherCommand implements CommandExecutor {
 			} else {
 				if(args[0].equalsIgnoreCase("rain") || args[0].equalsIgnoreCase("storm")){
 					targetWorld.setStorm(true);
-					player.sendMessage(ChatColor.GOLD + "Weather changed to " + ChatColor.RED + "Storm " + ChatColor.GOLD + "in " + ChatColor.RED + targetWorld.getName() + ChatColor.GOLD + ".");
+					targetWorld.setWeatherDuration(12000);
+					player.sendMessage(ChatColor.GOLD + "Weather changed to " + ChatColor.RED + "storm " + ChatColor.GOLD + "in " + ChatColor.RED + targetWorld.getName() + ChatColor.GOLD + ".");
 					return true;
 				}
-				if(args[0].equalsIgnoreCase("clear")){
+				if(args[0].equalsIgnoreCase("clear") || args[0].equalsIgnoreCase("sun")){
 					targetWorld.setStorm(false);
-					player.sendMessage(ChatColor.GOLD + "Weather changed to " + ChatColor.RED + "Clear " + ChatColor.GOLD + "in " + ChatColor.RED + targetWorld.getName() + ChatColor.GOLD + ".");
+					targetWorld.setWeatherDuration(12000);
+					player.sendMessage(ChatColor.GOLD + "Weather changed to " + ChatColor.RED + "clear " + ChatColor.GOLD + "in " + ChatColor.RED + targetWorld.getName() + ChatColor.GOLD + ".");
 					return true;
 				}
 			}
