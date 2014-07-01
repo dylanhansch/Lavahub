@@ -23,9 +23,6 @@ commands:
     rawmsg:
         description: Send raw message
         usage: /<command> <message>
-    say:
-        description: Send message as console
-        usage: /<command> <message>
     setspawn:
         description: Set server spawn
         usage: /<command>
@@ -54,8 +51,6 @@ permissions:
     lavahub.reload:
         default: op
     lavahub.rawmsg:
-        default: op
-    lavahub.say:
         default: op
     lavahub.setspawn:
         default: op
