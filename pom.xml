@@ -6,7 +6,7 @@
     <packaging>jar</packaging>
     <name>Lavahub</name>
     <url>http://dylanhansch.net/</url>
-    <description>Master bukkit plugin for the Lavahub Network.</description>
+    <description>Master bukkit plugin for the Lavahub Minecraft Server.</description>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>

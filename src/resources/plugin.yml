@@ -1,7 +1,7 @@
 main: net.dylanhansch.lavahub.Lavahub
 name: Lavahub
 version: 1.0
-description: Master bukkit plugin for the Lavahub Network.
+description: Master bukkit plugin for the Lavahub Minecraft Server.
 author: Dylan Hansch
 website: http://dylanhansch.net/
 commands:
