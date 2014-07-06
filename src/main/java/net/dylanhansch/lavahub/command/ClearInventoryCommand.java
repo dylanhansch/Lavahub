@@ -30,7 +30,7 @@ public class ClearInventoryCommand implements CommandExecutor {
 			if(args.length == 1){
 				targetPlayer.getInventory().clear();
 				targetPlayer.sendMessage(ChatColor.GOLD + "Your inventory was cleared by Console.");
-				sender.sendMessage(ChatColor.GOLD + "You cleared " + ChatColor.RESET + targetPlayer.getDisplayName() + ChatColor.GOLD + "'s inventory.");
+				sender.sendMessage(ChatColor.GOLD + "Cleared " + ChatColor.RESET + targetPlayer.getDisplayName() + ChatColor.GOLD + "'s inventory.");
 				return true;
 			}
 			if(args.length >= 2){
@@ -45,7 +45,7 @@ public class ClearInventoryCommand implements CommandExecutor {
 				return true;
 			} else {
 				player.getInventory().clear();
-				player.sendMessage(ChatColor.GOLD + "You cleared your inventory.");
+				player.sendMessage(ChatColor.GOLD + "Cleared your inventory.");
 				return true;
 			}
 		}
@@ -60,8 +60,7 @@ public class ClearInventoryCommand implements CommandExecutor {
 				return true;
 			} else {
 				targetPlayer.getInventory().clear();
-				targetPlayer.sendMessage(ChatColor.GOLD + "Your inventory was cleared by " + ChatColor.RESET + player.getDisplayName() + ChatColor.GOLD + ".");
-				player.sendMessage(ChatColor.GOLD + "You cleared " + ChatColor.RESET + targetPlayer.getDisplayName() + ChatColor.GOLD  + "'s inventory.");
+				player.sendMessage(ChatColor.GOLD + "Cleared " + ChatColor.RESET + targetPlayer.getDisplayName() + ChatColor.GOLD  + "'s inventory.");
 				return true;
 			}
 		}
