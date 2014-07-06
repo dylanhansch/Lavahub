@@ -25,23 +25,20 @@ public class GamemodeCommand implements CommandExecutor {
 			}
 			if(args[0].equalsIgnoreCase("0") || args[0].equalsIgnoreCase("survival")){
 					targetPlayer.setGameMode(GameMode.SURVIVAL);
-					targetPlayer.sendMessage(ChatColor.GOLD + "Console has changed your gamemode to " + ChatColor.RED + "survival" + ChatColor.GOLD + ".");
-					sender.sendMessage(ChatColor.GOLD + "You have changed " + ChatColor.RESET + targetPlayer.getDisplayName() + ChatColor.GOLD + "'s gamemode to " + ChatColor.RED + "survival" + ChatColor.GOLD + ".");
+					sender.sendMessage(ChatColor.GOLD + "Set " + ChatColor.RESET + targetPlayer.getDisplayName() + ChatColor.GOLD + "'s gamemode to " + ChatColor.RED + "survival" + ChatColor.GOLD + ".");
 					return true;
 			}
 			if(args[0].equalsIgnoreCase("1") || args[0].equalsIgnoreCase("creative")){
 				targetPlayer.setGameMode(GameMode.CREATIVE);
-				targetPlayer.sendMessage(ChatColor.GOLD + "Console has changed your gamemode to " + ChatColor.RED + "creative" + ChatColor.GOLD + ".");
-				sender.sendMessage(ChatColor.GOLD + "You have changed " + ChatColor.RESET + targetPlayer.getDisplayName() + ChatColor.GOLD + "'s gamemode to " + ChatColor.RED + "creative" + ChatColor.GOLD + ".");
+				sender.sendMessage(ChatColor.GOLD + "Set " + ChatColor.RESET + targetPlayer.getDisplayName() + ChatColor.GOLD + "'s gamemode to " + ChatColor.RED + "creative" + ChatColor.GOLD + ".");
 				return true;
 			}
 			if(args[0].equalsIgnoreCase("2") || args[0].equalsIgnoreCase("adventure")){
-					targetPlayer.setGameMode(GameMode.ADVENTURE);
-					targetPlayer.sendMessage(ChatColor.GOLD + "Console has changed your gamemode to " + ChatColor.RED + "adventure" + ChatColor.GOLD + ".");
-					sender.sendMessage(ChatColor.GOLD + "You have changed " + ChatColor.RESET + targetPlayer.getDisplayName() + ChatColor.GOLD + "'s gamemode to " + ChatColor.RED + "adventure" + ChatColor.GOLD + ".");
-					return true;
-				}
+				targetPlayer.setGameMode(GameMode.ADVENTURE);
+				sender.sendMessage(ChatColor.GOLD + "Set " + ChatColor.RESET + targetPlayer.getDisplayName() + ChatColor.GOLD + "'s gamemode to " + ChatColor.RED + "adventure" + ChatColor.GOLD + ".");
+				return true;
 			}
+		}
 		Player player = (Player) sender;
 		if(args.length == 0){
 			if(!player.hasPermission("lavahub.gamemode")){
@@ -59,17 +56,14 @@ public class GamemodeCommand implements CommandExecutor {
 			} else {
 				if(args[0].equalsIgnoreCase("0") || args[0].equalsIgnoreCase("survival")){
 						player.setGameMode(GameMode.SURVIVAL);
-						player.sendMessage(ChatColor.GOLD + "You changed your own gamemode to " + ChatColor.RED + "survival" + ChatColor.GOLD + ".");
 						return true;
 					}
 				if(args[0].equalsIgnoreCase("1") || args[0].equalsIgnoreCase("creative")){
 						player.setGameMode(GameMode.CREATIVE);
-						player.sendMessage(ChatColor.GOLD + "You changed your own gamemode to " + ChatColor.RED + "creative" + ChatColor.GOLD + ".");
 						return true;
 					}
 				if(args[0].equalsIgnoreCase("2") || args[0].equalsIgnoreCase("adventure")){
 						player.setGameMode(GameMode.ADVENTURE);
-						player.sendMessage(ChatColor.GOLD + "You changed your own gamemode to " + ChatColor.RED + "adventure" + ChatColor.GOLD + ".");
 						return true;
 					}
 				}
@@ -86,20 +80,17 @@ public class GamemodeCommand implements CommandExecutor {
 				}
 				if(args[0].equalsIgnoreCase("0") || args[0].equalsIgnoreCase("survival")){
 						targetPlayer.setGameMode(GameMode.SURVIVAL);
-						targetPlayer.sendMessage(player.getDisplayName() + ChatColor.GOLD + " has changed your gamemode to " + ChatColor.RED + "survival" + ChatColor.GOLD + ".");
-						player.sendMessage(ChatColor.GOLD + "You have changed " + ChatColor.RESET + targetPlayer.getDisplayName() + ChatColor.GOLD + "'s gamemode to " + ChatColor.RED + "survival" + ChatColor.GOLD + ".");
+						player.sendMessage(ChatColor.GOLD + "Set " + ChatColor.RESET + targetPlayer.getDisplayName() + ChatColor.GOLD + "'s gamemode to " + ChatColor.RED + "survival" + ChatColor.GOLD + ".");
 						return true;
 					}
 				if(args[0].equalsIgnoreCase("1") || args[0].equalsIgnoreCase("creative")){
 						targetPlayer.setGameMode(GameMode.CREATIVE);
-						targetPlayer.sendMessage(player.getDisplayName() + ChatColor.GOLD + " has changed your gamemode to " + ChatColor.RED + "creative" + ChatColor.GOLD + ".");
-						player.sendMessage(ChatColor.GOLD + "You have changed " + ChatColor.RESET + targetPlayer.getDisplayName() + ChatColor.GOLD + "'s gamemode to " + ChatColor.RED + "creative" + ChatColor.GOLD + ".");
+						player.sendMessage(ChatColor.GOLD + "Set " + ChatColor.RESET + targetPlayer.getDisplayName() + ChatColor.GOLD + "'s gamemode to " + ChatColor.RED + "creative" + ChatColor.GOLD + ".");
 						return true;
 					}
 				if(args[0].equalsIgnoreCase("2") || args[0].equalsIgnoreCase("adventure")){
 						targetPlayer.setGameMode(GameMode.ADVENTURE);
-						targetPlayer.sendMessage(player.getDisplayName() + ChatColor.GOLD + " has changed your gamemode to " + ChatColor.RED + "adventure" + ChatColor.GOLD + ".");
-						player.sendMessage(ChatColor.GOLD + "You have changed " + ChatColor.RESET + targetPlayer.getDisplayName() + ChatColor.GOLD + "'s gamemode to " + ChatColor.RED + "adventure" + ChatColor.GOLD + ".");
+						player.sendMessage(ChatColor.GOLD + "Set " + ChatColor.RESET + targetPlayer.getDisplayName() + ChatColor.GOLD + "'s gamemode to " + ChatColor.RED + "adventure" + ChatColor.GOLD + ".");
 						return true;
 					}
 			}
