@@ -29,7 +29,6 @@ public class ClearInventoryCommand implements CommandExecutor {
 			}
 			if(args.length == 1){
 				targetPlayer.getInventory().clear();
-				targetPlayer.sendMessage(ChatColor.GOLD + "Your inventory was cleared by Console.");
 				sender.sendMessage(ChatColor.GOLD + "Cleared " + ChatColor.RESET + targetPlayer.getDisplayName() + ChatColor.GOLD + "'s inventory.");
 				return true;
 			}
