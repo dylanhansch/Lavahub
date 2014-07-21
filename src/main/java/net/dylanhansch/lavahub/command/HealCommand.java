@@ -40,7 +40,7 @@ public class HealCommand implements CommandExecutor {
 		Player player = (Player) sender;
 		if(args.length == 0){
 			if(!player.hasPermission("lavahub.heal")) {
-				player.sendMessage(ChatColor.DARK_RED + "You do not have access to that command.");
+				player.sendMessage(ChatColor.DARK_RED + "No permission.");
 				return true;
 			} else {
 				player.setHealth(20);
@@ -55,7 +55,7 @@ public class HealCommand implements CommandExecutor {
 		}
 		if(args.length == 1){
 			if(!player.hasPermission("lavahub.heal.others")){
-				player.sendMessage(ChatColor.DARK_RED + "You do not have access to that command.");
+				player.sendMessage(ChatColor.DARK_RED + "No permission.");
 				return true;
 			} else {
 				targetPlayer.setHealth(20);

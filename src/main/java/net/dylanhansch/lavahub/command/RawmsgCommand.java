@@ -17,7 +17,7 @@ public class RawmsgCommand implements CommandExecutor {
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLable, String[] args){
 		if(args.length == 0){
 			if(!sender.hasPermission("lavahub.rawmsg")){
-				sender.sendMessage(ChatColor.DARK_RED + "You do not have access to that command.");
+				sender.sendMessage(ChatColor.DARK_RED + "No permission.");
 				return true;
 			} else {
 				sender.sendMessage(ChatColor.RED + "Not enough arguments!");
@@ -26,7 +26,7 @@ public class RawmsgCommand implements CommandExecutor {
 		}
 		if(args.length >= 1){
 			if(!sender.hasPermission("lavahub.rawmsg")){
-				sender.sendMessage(ChatColor.DARK_RED + "You do not have access to that command.");
+				sender.sendMessage(ChatColor.DARK_RED + "No permission.");
 				return true;
 			} else {
 				StringBuilder message = new StringBuilder("");

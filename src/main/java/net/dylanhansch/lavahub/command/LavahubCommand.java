@@ -16,7 +16,7 @@ public class LavahubCommand implements CommandExecutor {
 	
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLable, String[] args){
 		if(!sender.hasPermission("lavahub.reload")){
-			sender.sendMessage(ChatColor.DARK_RED + "You do not have access to that command.");
+			sender.sendMessage(ChatColor.DARK_RED + "No permission.");
 			return true;
 		}else{
 			plugin.reloadConfig();

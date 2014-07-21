@@ -39,7 +39,7 @@ public class TimeCommand implements CommandExecutor {
 		World world = player.getWorld();
 		if(args.length == 0){
 			if(!player.hasPermission("lavahub.time")){
-				player.sendMessage(ChatColor.DARK_RED + "You do not have access to that command.");
+				player.sendMessage(ChatColor.DARK_RED + "No permission.");
 				return true;
 			} else {
 				player.sendMessage(ChatColor.RED + "Not enough arguments!");
@@ -48,7 +48,7 @@ public class TimeCommand implements CommandExecutor {
 		}
 		if(args.length == 1){
 			if(!player.hasPermission("lavahub.time")){
-				player.sendMessage(ChatColor.DARK_RED + "You do not have access to that command.");
+				player.sendMessage(ChatColor.DARK_RED + "No permission.");
 				return true;
 			} else {
 				if(args[0].equalsIgnoreCase("day")){
@@ -73,7 +73,7 @@ public class TimeCommand implements CommandExecutor {
 		World targetWorld = plugin.getServer().getWorld(args[1]);
 		if(args.length == 2){
 			if(!player.hasPermission("lavahub.time")){
-				player.sendMessage(ChatColor.DARK_RED + "You do not have access to that command.");
+				player.sendMessage(ChatColor.DARK_RED + "No permission.");
 				return true;
 			} else {
 				if(args[0].equalsIgnoreCase("day")){
@@ -95,7 +95,7 @@ public class TimeCommand implements CommandExecutor {
 		}
 		if(args.length >= 3){
 			if(!player.hasPermission("lavahub.time")){
-				player.sendMessage(ChatColor.DARK_RED + "You do not have access to that command.");
+				player.sendMessage(ChatColor.DARK_RED + "No permission.");
 				return true;
 			} else {
 				player.sendMessage(ChatColor.RED + "Too many arguments!");

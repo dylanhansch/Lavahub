@@ -42,7 +42,7 @@ public class GamemodeCommand implements CommandExecutor {
 		Player player = (Player) sender;
 		if(args.length == 0){
 			if(!player.hasPermission("lavahub.gamemode")){
-				player.sendMessage(ChatColor.DARK_RED + "You do not have access to that command.");
+				player.sendMessage(ChatColor.DARK_RED + "No permission.");
 				return true;
 			} else {
 				player.sendMessage(ChatColor.RED + "Not enough arguments!");
@@ -51,7 +51,7 @@ public class GamemodeCommand implements CommandExecutor {
 		}
 		if(args.length == 1){
 			if(!player.hasPermission("lavahub.gamemode")){
-				player.sendMessage(ChatColor.DARK_RED + "You do not have access to that command.");
+				player.sendMessage(ChatColor.DARK_RED + "No permission.");
 				return true;
 			} else {
 				if(args[0].equalsIgnoreCase("0") || args[0].equalsIgnoreCase("survival")){
@@ -71,7 +71,7 @@ public class GamemodeCommand implements CommandExecutor {
 		Player targetPlayer = plugin.getServer().getPlayer(args[1]);
 		if(args.length == 2){
 			if(!player.hasPermission("lavahub.gamemode")){
-				player.sendMessage(ChatColor.DARK_RED + "You do not have access to that command.");
+				player.sendMessage(ChatColor.DARK_RED + "No permission.");
 				return true;
 			} else {
 				if(targetPlayer == null){
@@ -96,7 +96,7 @@ public class GamemodeCommand implements CommandExecutor {
 			}
 			if(args.length >= 3){
 				if(!player.hasPermission("lavahub.gamemode")){
-					player.sendMessage(ChatColor.DARK_RED + "You do not have access to that command.");
+					player.sendMessage(ChatColor.DARK_RED + "No permission.");
 					return true;
 				} else {
 					player.sendMessage(ChatColor.RED + "Too many arguments!");
