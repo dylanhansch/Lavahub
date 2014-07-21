@@ -17,6 +17,9 @@ commands:
         description: Change player gamemode
         usage: /<command> <mode> <player>
         aliases: [gm]
+    heal:
+        description: Heal player
+        usage: /<command> <player>
     lavahub:
         description: Reload Lavahub configuration from disk
         usage: /<command>

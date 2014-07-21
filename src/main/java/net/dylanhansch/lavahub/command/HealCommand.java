@@ -9,10 +9,10 @@ import org.bukkit.entity.Player;
 
 import net.dylanhansch.lavahub.Lavahub;
 
-public class ClearInventoryCommand implements CommandExecutor {
+public class HealCommand implements CommandExecutor {
 	private final Lavahub plugin;
 
-	public ClearInventoryCommand(Lavahub plugin) {
+	public HealCommand(Lavahub plugin) {
 		this.plugin = plugin;
 	}
 	
@@ -28,8 +28,8 @@ public class ClearInventoryCommand implements CommandExecutor {
 				return true;
 			}
 			if(args.length == 1){
-				targetPlayer.getInventory().clear();
-				sender.sendMessage(ChatColor.GOLD + "Cleared " + ChatColor.RESET + targetPlayer.getDisplayName() + ChatColor.GOLD + "'s inventory.");
+				targetPlayer.setHealth(20);
+				sender.sendMessage(ChatColor.GOLD + "Healed " + ChatColor.RESET + targetPlayer.getDisplayName());
 				return true;
 			}
 			if(args.length >= 2){
@@ -39,12 +39,12 @@ public class ClearInventoryCommand implements CommandExecutor {
 		}
 		Player player = (Player) sender;
 		if(args.length == 0){
-			if(!player.hasPermission("lavahub.clearinventory")) {
+			if(!player.hasPermission("lavahub.heal")) {
 				player.sendMessage(ChatColor.DARK_RED + "You do not have access to that command.");
 				return true;
 			} else {
-				player.getInventory().clear();
-				player.sendMessage(ChatColor.GOLD + "Cleared your inventory.");
+				player.setHealth(20);
+				player.sendMessage(ChatColor.GOLD + "Healed.");
 				return true;
 			}
 		}
@@ -54,12 +54,12 @@ public class ClearInventoryCommand implements CommandExecutor {
 			return true;
 		}
 		if(args.length == 1){
-			if(!player.hasPermission("lavahub.clearinventory.others")){
+			if(!player.hasPermission("lavahub.heal.others")){
 				player.sendMessage(ChatColor.DARK_RED + "You do not have access to that command.");
 				return true;
 			} else {
-				targetPlayer.getInventory().clear();
-				player.sendMessage(ChatColor.GOLD + "Cleared " + ChatColor.RESET + targetPlayer.getDisplayName() + ChatColor.GOLD  + "'s inventory.");
+				targetPlayer.setHealth(20);
+				player.sendMessage(ChatColor.GOLD + "Healed " + ChatColor.RESET + targetPlayer.getDisplayName());
 				return true;
 			}
 		}
@@ -68,7 +68,5 @@ public class ClearInventoryCommand implements CommandExecutor {
 			return false;
 		}
 		return false;
-		
 	}
-
 }

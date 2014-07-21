@@ -3,6 +3,7 @@ package net.dylanhansch.lavahub;
 import net.dylanhansch.lavahub.command.ActionCommand;
 import net.dylanhansch.lavahub.command.ClearInventoryCommand;
 import net.dylanhansch.lavahub.command.GamemodeCommand;
+import net.dylanhansch.lavahub.command.HealCommand;
 import net.dylanhansch.lavahub.command.LavahubCommand;
 import net.dylanhansch.lavahub.command.RawmsgCommand;
 import net.dylanhansch.lavahub.command.SetSpawnCommand;
@@ -34,6 +35,7 @@ public class Lavahub extends JavaPlugin implements Listener {
 		getCommand("action").setExecutor(new ActionCommand(this));
 		getCommand("clearinventory").setExecutor(new ClearInventoryCommand(this));
 		getCommand("gamemode").setExecutor(new GamemodeCommand(this));
+		getCommand("heal").setExecutor(new HealCommand(this));
 		getCommand("lavahub").setExecutor(new LavahubCommand(this));
 		getCommand("rawmsg").setExecutor(new RawmsgCommand(this));
 		getCommand("time").setExecutor(new TimeCommand(this));
