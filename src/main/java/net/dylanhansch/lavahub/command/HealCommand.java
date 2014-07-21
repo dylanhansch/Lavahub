@@ -29,7 +29,7 @@ public class HealCommand implements CommandExecutor {
 			}
 			if(args.length == 1){
 				targetPlayer.setHealth(20);
-				sender.sendMessage(ChatColor.GOLD + "Healed " + ChatColor.RESET + targetPlayer.getDisplayName());
+				sender.sendMessage(ChatColor.GOLD + "Healed " + ChatColor.RESET + targetPlayer.getDisplayName() + ChatColor.GOLD + ".");
 				return true;
 			}
 			if(args.length >= 2){
@@ -59,7 +59,7 @@ public class HealCommand implements CommandExecutor {
 				return true;
 			} else {
 				targetPlayer.setHealth(20);
-				player.sendMessage(ChatColor.GOLD + "Healed " + ChatColor.RESET + targetPlayer.getDisplayName());
+				player.sendMessage(ChatColor.GOLD + "Healed " + ChatColor.RESET + targetPlayer.getDisplayName() + ChatColor.GOLD + ".");
 				return true;
 			}
 		}
