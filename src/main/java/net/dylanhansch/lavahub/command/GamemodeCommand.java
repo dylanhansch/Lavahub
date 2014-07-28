@@ -18,6 +18,7 @@ public class GamemodeCommand implements CommandExecutor {
 
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLable, String[] args){
 		if(!(sender instanceof Player)){
+			@SuppressWarnings("deprecation")
 			Player targetPlayer = plugin.getServer().getPlayer(args[1]);
 			if(targetPlayer == null){
 				sender.sendMessage(ChatColor.RED + "That player is not online!");
@@ -68,6 +69,7 @@ public class GamemodeCommand implements CommandExecutor {
 					}
 				}
 			}
+		@SuppressWarnings("deprecation")
 		Player targetPlayer = plugin.getServer().getPlayer(args[1]);
 		if(args.length == 2){
 			if(!player.hasPermission("lavahub.gamemode")){

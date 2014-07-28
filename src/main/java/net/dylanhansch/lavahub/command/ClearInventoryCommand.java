@@ -22,6 +22,7 @@ public class ClearInventoryCommand implements CommandExecutor {
 				sender.sendMessage(ChatColor.RED + "Not executable by console!");
 				return true;
 			}
+			@SuppressWarnings("deprecation")
 			Player targetPlayer = Bukkit.getServer().getPlayer(args[0]);
 			if(targetPlayer == null){
 				sender.sendMessage(ChatColor.RED + "That player is not online!");
@@ -48,6 +49,7 @@ public class ClearInventoryCommand implements CommandExecutor {
 				return true;
 			}
 		}
+		@SuppressWarnings("deprecation")
 		Player targetPlayer = plugin.getServer().getPlayer(args[0]);
 		if(targetPlayer == null){
 			player.sendMessage(ChatColor.RED + "That player is not online!");

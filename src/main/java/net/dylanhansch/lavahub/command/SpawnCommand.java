@@ -32,7 +32,8 @@ public class SpawnCommand implements CommandExecutor{
                 return true;
             }
         }
-        Player targetPlayer = Bukkit.getServer().getPlayer(args[0]);
+        @SuppressWarnings("deprecation")
+		Player targetPlayer = Bukkit.getServer().getPlayer(args[0]);
         if(args.length == 1){
             if(!player.hasPermission("lavahub.spawn")){
                 player.sendMessage(ChatColor.DARK_RED + "No permission.");

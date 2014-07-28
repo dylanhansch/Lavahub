@@ -22,13 +22,14 @@ public class HealCommand implements CommandExecutor {
 				sender.sendMessage(ChatColor.RED + "Not executable by console!");
 				return true;
 			}
+			@SuppressWarnings("deprecation")
 			Player targetPlayer = Bukkit.getServer().getPlayer(args[0]);
 			if(targetPlayer == null){
 				sender.sendMessage(ChatColor.RED + "That player is not online!");
 				return true;
 			}
 			if(args.length == 1){
-				targetPlayer.setHealth(20);
+				targetPlayer.setHealth((double)20);
 				sender.sendMessage(ChatColor.GOLD + "Healed " + ChatColor.RESET + targetPlayer.getDisplayName() + ChatColor.GOLD + ".");
 				return true;
 			}
@@ -43,11 +44,12 @@ public class HealCommand implements CommandExecutor {
 				player.sendMessage(ChatColor.DARK_RED + "No permission.");
 				return true;
 			} else {
-				player.setHealth(20);
+				player.setHealth((double)20);
 				player.sendMessage(ChatColor.GOLD + "Healed.");
 				return true;
 			}
 		}
+		@SuppressWarnings("deprecation")
 		Player targetPlayer = plugin.getServer().getPlayer(args[0]);
 		if(targetPlayer == null){
 			player.sendMessage(ChatColor.RED + "That player is not online!");
@@ -58,7 +60,7 @@ public class HealCommand implements CommandExecutor {
 				player.sendMessage(ChatColor.DARK_RED + "No permission.");
 				return true;
 			} else {
-				targetPlayer.setHealth(20);
+				targetPlayer.setHealth((double)20);
 				player.sendMessage(ChatColor.GOLD + "Healed " + ChatColor.RESET + targetPlayer.getDisplayName() + ChatColor.GOLD + ".");
 				return true;
 			}
