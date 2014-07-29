@@ -34,10 +34,10 @@ commands:
         usage: /<command> <player>
     time:
         description: Set world time
-        usage: /<command> <day|noon|night>
+        usage: /<command> <day/noon/night>
     weather:
-        description: Change the weather
-        usage: /<command> <storm/rain|clear>
+        description: Set weather in a world
+        usage: /<command> <clear/sun/rain/storm/thunder> <world>
 permissions:
     lavahub.*:
         default: op
