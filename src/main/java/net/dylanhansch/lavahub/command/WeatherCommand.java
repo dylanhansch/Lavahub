@@ -46,7 +46,7 @@ public class WeatherCommand implements CommandExecutor {
 		World world = player.getWorld();
 		if(args.length == 0){
 			if(!player.hasPermission("lavahub.weather")){
-				player.sendMessage(ChatColor.DARK_RED + "No permission.");
+				player.sendMessage(ChatColor.DARK_RED + "You do not have lavahub.weather");
 				return true;
 			} else {
 				player.sendMessage(ChatColor.RED + "Not enough arguments!");
@@ -55,7 +55,7 @@ public class WeatherCommand implements CommandExecutor {
 		}
 		if(args.length == 1){
 			if(!player.hasPermission("lavahub.weather")){
-				player.sendMessage(ChatColor.DARK_RED + "No permission.");
+				player.sendMessage(ChatColor.DARK_RED + "You do not have lavahub.weather");
 				return true;
 			} else {
 				if(args[0].equalsIgnoreCase("rain") || args[0].equalsIgnoreCase("storm")){
@@ -81,7 +81,7 @@ public class WeatherCommand implements CommandExecutor {
 		World targetWorld = plugin.getServer().getWorld(args[1]);
 		if(args.length == 2){
 			if(!player.hasPermission("lavahub.weather")){
-				player.sendMessage(ChatColor.DARK_RED + "No permission.");
+				player.sendMessage(ChatColor.DARK_RED + "You do not have lavahub.weather");
 				return true;
 			} else {
 				if(targetWorld == null){
@@ -110,7 +110,7 @@ public class WeatherCommand implements CommandExecutor {
 		}
 		if(args.length >= 3){
 			if(!player.hasPermission("lavahub.weather")){
-				player.sendMessage(ChatColor.DARK_RED + "No permission.");
+				player.sendMessage(ChatColor.DARK_RED + "You do not have lavahub.weather");
 				return true;
 			} else {
 				player.sendMessage(ChatColor.RED + "Too many arguments!");

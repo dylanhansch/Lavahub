@@ -23,7 +23,7 @@ public class SetSpawnCommand implements CommandExecutor{
         Player player = (Player) sender;
         if(args.length == 0){
             if(!player.hasPermission("lavahub.setspawn")){
-                player.sendMessage(ChatColor.DARK_RED + "No permission.");
+                player.sendMessage(ChatColor.DARK_RED + "You do not have lavahub.setspawn");
                 return true;
             } else {
                 plugin.getConfig().set("spawn.world", player.getLocation().getWorld().getName());
@@ -39,7 +39,7 @@ public class SetSpawnCommand implements CommandExecutor{
         }
         if(args.length >= 1){
             if(!player.hasPermission("lavahub.setspawn")){
-                player.sendMessage(ChatColor.DARK_RED + "No permission.");
+                player.sendMessage(ChatColor.DARK_RED + "You do not have lavahub.setspawn");
                 return true;
             } else {
                 player.sendMessage(ChatColor.RED + "Too many arguments!");

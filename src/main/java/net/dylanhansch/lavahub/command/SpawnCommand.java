@@ -24,7 +24,7 @@ public class SpawnCommand implements CommandExecutor{
         Player player = (Player) sender;
         if(args.length == 0){
             if(!player.hasPermission("lavahub.spawn")){
-                player.sendMessage(ChatColor.DARK_RED + "No permission.");
+                player.sendMessage(ChatColor.DARK_RED + "You do not have lavahub.spawn");
                 return true;
             } else {
                 player.teleport(plugin.getSpawn());
@@ -36,7 +36,7 @@ public class SpawnCommand implements CommandExecutor{
 		Player targetPlayer = Bukkit.getServer().getPlayer(args[0]);
         if(args.length == 1){
             if(!player.hasPermission("lavahub.spawn")){
-                player.sendMessage(ChatColor.DARK_RED + "No permission.");
+                player.sendMessage(ChatColor.DARK_RED + "You do not have lavahub.spawn");
                 return true;
             } else {
                 targetPlayer.teleport(plugin.getSpawn());
@@ -47,7 +47,7 @@ public class SpawnCommand implements CommandExecutor{
         }
         if(args.length >= 2){
             if(!player.hasPermission("lavahub.spawn")){
-                player.sendMessage(ChatColor.DARK_RED + "No permission.");
+                player.sendMessage(ChatColor.DARK_RED + "You do not have lavahub.spawn");
                 return true;
             } else {
                 player.sendMessage(ChatColor.RED + "Too many arguments!");

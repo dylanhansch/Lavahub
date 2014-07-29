@@ -41,7 +41,7 @@ public class ClearInventoryCommand implements CommandExecutor {
 		Player player = (Player) sender;
 		if(args.length == 0){
 			if(!player.hasPermission("lavahub.clearinventory")) {
-				player.sendMessage(ChatColor.DARK_RED + "No permission.");
+				player.sendMessage(ChatColor.DARK_RED + "You do not have lavahub.clearinventory");
 				return true;
 			} else {
 				player.getInventory().clear();
@@ -57,7 +57,7 @@ public class ClearInventoryCommand implements CommandExecutor {
 		}
 		if(args.length == 1){
 			if(!player.hasPermission("lavahub.clearinventory.others")){
-				player.sendMessage(ChatColor.DARK_RED + "No permission.");
+				player.sendMessage(ChatColor.DARK_RED + "You do not have lavahub.clearinventory.others");
 				return true;
 			} else {
 				targetPlayer.getInventory().clear();

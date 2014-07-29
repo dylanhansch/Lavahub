@@ -43,7 +43,7 @@ public class GamemodeCommand implements CommandExecutor {
 		Player player = (Player) sender;
 		if(args.length == 0){
 			if(!player.hasPermission("lavahub.gamemode")){
-				player.sendMessage(ChatColor.DARK_RED + "No permission.");
+				player.sendMessage(ChatColor.DARK_RED + "You do not have lavahub.gamemode");
 				return true;
 			} else {
 				player.sendMessage(ChatColor.RED + "Not enough arguments!");
@@ -52,7 +52,7 @@ public class GamemodeCommand implements CommandExecutor {
 		}
 		if(args.length == 1){
 			if(!player.hasPermission("lavahub.gamemode")){
-				player.sendMessage(ChatColor.DARK_RED + "No permission.");
+				player.sendMessage(ChatColor.DARK_RED + "You do not have lavahub.gamemode");
 				return true;
 			} else {
 				if(args[0].equalsIgnoreCase("0") || args[0].equalsIgnoreCase("survival")){
@@ -72,8 +72,8 @@ public class GamemodeCommand implements CommandExecutor {
 		@SuppressWarnings("deprecation")
 		Player targetPlayer = plugin.getServer().getPlayer(args[1]);
 		if(args.length == 2){
-			if(!player.hasPermission("lavahub.gamemode")){
-				player.sendMessage(ChatColor.DARK_RED + "No permission.");
+			if(!player.hasPermission("lavahub.gamemode.others")){
+				player.sendMessage(ChatColor.DARK_RED + "You do not have lavahub.gamemode.others");
 				return true;
 			} else {
 				if(targetPlayer == null){
@@ -98,7 +98,7 @@ public class GamemodeCommand implements CommandExecutor {
 			}
 			if(args.length >= 3){
 				if(!player.hasPermission("lavahub.gamemode")){
-					player.sendMessage(ChatColor.DARK_RED + "No permission.");
+					player.sendMessage(ChatColor.DARK_RED + "You do not have lavahub.gamemode");
 					return true;
 				} else {
 					player.sendMessage(ChatColor.RED + "Too many arguments!");
