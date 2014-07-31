@@ -19,6 +19,10 @@ public class TimeCommand implements CommandExecutor {
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLable, String[] args){
 		if(!(sender instanceof Player)){
 			World targetWorld = plugin.getServer().getWorld(args[1]);
+			if(targetWorld == null){
+				sender.sendMessage(ChatColor.RED + "That world does not excist!");
+				return true;
+			}
 			if(args[0].equalsIgnoreCase("day")){
 				targetWorld.setTime(0);
 				sender.sendMessage(ChatColor.GOLD + "Changed time to " + ChatColor.RED + "day" + ChatColor.GOLD + " in '" + ChatColor.RED + targetWorld.getName() + ChatColor.GOLD + "'.");
@@ -66,6 +70,9 @@ public class TimeCommand implements CommandExecutor {
 					sender.sendMessage(ChatColor.GOLD + "Changed time to " + ChatColor.RED + "night" + ChatColor.GOLD + ".");
 					return true;
 				}
+				if(!args[0].equalsIgnoreCase("day") || !args[0].equalsIgnoreCase("noon") || !args[0].equalsIgnoreCase("night")){
+					return false;
+				}
 				
 			}
 			
@@ -76,6 +83,10 @@ public class TimeCommand implements CommandExecutor {
 				player.sendMessage(ChatColor.DARK_RED + "You do not have lavahub.time");
 				return true;
 			} else {
+				if(targetWorld == null){
+					sender.sendMessage(ChatColor.RED + "That world does not excist!");
+					return true;
+				}
 				if(args[0].equalsIgnoreCase("day")){
 					targetWorld.setTime(0);
 					sender.sendMessage(ChatColor.GOLD + "Changed time to " + ChatColor.RED + "day" + ChatColor.GOLD + " in '" + ChatColor.RED + targetWorld.getName() + ChatColor.GOLD + "'.");
@@ -90,6 +101,9 @@ public class TimeCommand implements CommandExecutor {
 					targetWorld.setTime(14000);
 					sender.sendMessage(ChatColor.GOLD + "Changed time to " + ChatColor.RED + "night" + ChatColor.GOLD + " in '" + ChatColor.RED + targetWorld.getName() + ChatColor.GOLD + "'.");
 					return true;
+				}
+				if(!args[0].equalsIgnoreCase("day") || !args[0].equalsIgnoreCase("noon") || !args[0].equalsIgnoreCase("night")){
+					return false;
 				}
 			}
 		}

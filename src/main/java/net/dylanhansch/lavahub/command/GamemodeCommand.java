@@ -56,19 +56,22 @@ public class GamemodeCommand implements CommandExecutor {
 				return true;
 			} else {
 				if(args[0].equalsIgnoreCase("0") || args[0].equalsIgnoreCase("survival")){
-						player.setGameMode(GameMode.SURVIVAL);
-						return true;
-					}
+					player.setGameMode(GameMode.SURVIVAL);
+					return true;
+				}
 				if(args[0].equalsIgnoreCase("1") || args[0].equalsIgnoreCase("creative")){
-						player.setGameMode(GameMode.CREATIVE);
-						return true;
-					}
+					player.setGameMode(GameMode.CREATIVE);
+					return true;
+				}
 				if(args[0].equalsIgnoreCase("2") || args[0].equalsIgnoreCase("adventure")){
-						player.setGameMode(GameMode.ADVENTURE);
-						return true;
-					}
+					player.setGameMode(GameMode.ADVENTURE);
+					return true;
+				}
+				if(!args[0].equalsIgnoreCase("0") || !args[0].equalsIgnoreCase("survival") || !args[0].equalsIgnoreCase("1") || !args[0].equalsIgnoreCase("creative") || !args[0].equalsIgnoreCase("2") || !args[0].equalsIgnoreCase("adventure")){
+					return false;
 				}
 			}
+		}
 		@SuppressWarnings("deprecation")
 		Player targetPlayer = plugin.getServer().getPlayer(args[1]);
 		if(args.length == 2){
@@ -81,20 +84,23 @@ public class GamemodeCommand implements CommandExecutor {
 					return true;
 				}
 				if(args[0].equalsIgnoreCase("0") || args[0].equalsIgnoreCase("survival")){
-						targetPlayer.setGameMode(GameMode.SURVIVAL);
-						player.sendMessage(ChatColor.GOLD + "Set " + ChatColor.RESET + targetPlayer.getDisplayName() + ChatColor.GOLD + "'s gamemode to " + ChatColor.RED + "survival" + ChatColor.GOLD + ".");
-						return true;
-					}
+					targetPlayer.setGameMode(GameMode.SURVIVAL);
+					player.sendMessage(ChatColor.GOLD + "Set " + ChatColor.RESET + targetPlayer.getDisplayName() + ChatColor.GOLD + "'s gamemode to " + ChatColor.RED + "survival" + ChatColor.GOLD + ".");
+					return true;
+				}
 				if(args[0].equalsIgnoreCase("1") || args[0].equalsIgnoreCase("creative")){
-						targetPlayer.setGameMode(GameMode.CREATIVE);
-						player.sendMessage(ChatColor.GOLD + "Set " + ChatColor.RESET + targetPlayer.getDisplayName() + ChatColor.GOLD + "'s gamemode to " + ChatColor.RED + "creative" + ChatColor.GOLD + ".");
-						return true;
-					}
+					targetPlayer.setGameMode(GameMode.CREATIVE);
+					player.sendMessage(ChatColor.GOLD + "Set " + ChatColor.RESET + targetPlayer.getDisplayName() + ChatColor.GOLD + "'s gamemode to " + ChatColor.RED + "creative" + ChatColor.GOLD + ".");
+					return true;
+				}
 				if(args[0].equalsIgnoreCase("2") || args[0].equalsIgnoreCase("adventure")){
-						targetPlayer.setGameMode(GameMode.ADVENTURE);
-						player.sendMessage(ChatColor.GOLD + "Set " + ChatColor.RESET + targetPlayer.getDisplayName() + ChatColor.GOLD + "'s gamemode to " + ChatColor.RED + "adventure" + ChatColor.GOLD + ".");
-						return true;
-					}
+					targetPlayer.setGameMode(GameMode.ADVENTURE);
+					player.sendMessage(ChatColor.GOLD + "Set " + ChatColor.RESET + targetPlayer.getDisplayName() + ChatColor.GOLD + "'s gamemode to " + ChatColor.RED + "adventure" + ChatColor.GOLD + ".");
+					return true;
+				}
+				if(!args[0].equalsIgnoreCase("0") || !args[0].equalsIgnoreCase("survival") || !args[0].equalsIgnoreCase("1") || !args[0].equalsIgnoreCase("creative") || !args[0].equalsIgnoreCase("2") || !args[0].equalsIgnoreCase("adventure")){
+					return false;
+				}
 			}
 			if(args.length >= 3){
 				if(!player.hasPermission("lavahub.gamemode")){

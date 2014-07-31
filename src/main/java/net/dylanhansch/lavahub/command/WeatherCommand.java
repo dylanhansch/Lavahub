@@ -76,6 +76,9 @@ public class WeatherCommand implements CommandExecutor {
 					player.sendMessage(ChatColor.GOLD + "Weather changed to " + ChatColor.RED + "thunder" + ChatColor.GOLD + ".");
 					return true;
 				}
+				if(!args[0].equalsIgnoreCase("rain") || !args[0].equalsIgnoreCase("storm") || !args[0].equalsIgnoreCase("clear") || !args[0].equalsIgnoreCase("sun") || !args[0].equalsIgnoreCase("thunder")){
+					return false;
+				}
 			}
 		}
 		World targetWorld = plugin.getServer().getWorld(args[1]);
@@ -105,6 +108,9 @@ public class WeatherCommand implements CommandExecutor {
 					targetWorld.setThunderDuration(12000);
 					player.sendMessage(ChatColor.GOLD + "Weather changed to " + ChatColor.RED + "thunder" + ChatColor.GOLD + "in" + ChatColor.RED + targetWorld.getName() + ChatColor.GOLD + ".");
 					return true;
+				}
+				if(!args[0].equalsIgnoreCase("rain") || !args[0].equalsIgnoreCase("storm") || !args[0].equalsIgnoreCase("clear") || !args[0].equalsIgnoreCase("sun") || !args[0].equalsIgnoreCase("thunder")){
+					return false;
 				}
 			}
 		}
