@@ -35,6 +35,13 @@ commands:
     time:
         description: Set world time
         usage: /<command> <day/noon/night>
+    teleport:
+        description: Teleport to specififed player
+        usage: /<command> <targetPlayer> <Second targetPlayer>
+        aliases: [tp]
+    tphere:
+        description: Teleport player to you
+        usage: /<command> <player>
     weather:
         description: Set weather in a world
         usage: /<command> <clear/sun/rain/storm/thunder> <world>
@@ -60,6 +67,12 @@ permissions:
     lavahub.spawn:
         default: op
     lavahub.time:
+        default: op
+    lavahub.tp:
+        default: op
+    lavahub.tp.others:
+        default: op
+    lavahub.tphere:
         default: op
     lavahub.weather:
         default: op

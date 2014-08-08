@@ -8,7 +8,9 @@ import net.dylanhansch.lavahub.command.LavahubCommand;
 import net.dylanhansch.lavahub.command.RawmsgCommand;
 import net.dylanhansch.lavahub.command.SetSpawnCommand;
 import net.dylanhansch.lavahub.command.SpawnCommand;
+import net.dylanhansch.lavahub.command.TpCommand;
 import net.dylanhansch.lavahub.command.TimeCommand;
+import net.dylanhansch.lavahub.command.TphereCommand;
 import net.dylanhansch.lavahub.command.WeatherCommand;
 
 import org.bukkit.Bukkit;
@@ -38,9 +40,11 @@ public class Lavahub extends JavaPlugin implements Listener {
 		getCommand("heal").setExecutor(new HealCommand(this));
 		getCommand("lavahub").setExecutor(new LavahubCommand(this));
 		getCommand("rawmsg").setExecutor(new RawmsgCommand(this));
-		getCommand("time").setExecutor(new TimeCommand(this));
-		getCommand("spawn").setExecutor(new SpawnCommand(this));
 		getCommand("setspawn").setExecutor(new SetSpawnCommand(this));
+		getCommand("spawn").setExecutor(new SpawnCommand(this));
+		getCommand("time").setExecutor(new TimeCommand(this));
+		getCommand("teleport").setExecutor(new TpCommand(this));
+		getCommand("tphere").setExecutor(new TphereCommand(this));
 		getCommand("weather").setExecutor(new WeatherCommand(this));
 	}
 
