@@ -21,7 +21,7 @@ public class ActionCommand implements CommandExecutor{
 				sender.sendMessage(ChatColor.DARK_RED + "You do not have lavahub.action");
 				return true;
 			} else {
-				sender.sendMessage(ChatColor.RED + "Not enough arguments!");
+				sender.sendMessage(ChatColor.RED + "Error: Not enough arguments!");
 				return false;
 			}
 		}

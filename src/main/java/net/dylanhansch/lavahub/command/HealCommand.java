@@ -25,7 +25,7 @@ public class HealCommand implements CommandExecutor {
 			@SuppressWarnings("deprecation")
 			Player targetPlayer = Bukkit.getServer().getPlayer(args[0]);
 			if(targetPlayer == null){
-				sender.sendMessage(ChatColor.RED + "That player is not online!");
+				sender.sendMessage(ChatColor.RED + "Error: That player is not online!");
 				return true;
 			}
 			if(args.length == 1){
@@ -34,7 +34,7 @@ public class HealCommand implements CommandExecutor {
 				return true;
 			}
 			if(args.length >= 2){
-				sender.sendMessage(ChatColor.RED + "Too many arguments!");
+				sender.sendMessage(ChatColor.RED + "Error: Too many arguments!");
 				return false;
 			}
 		}
@@ -52,7 +52,7 @@ public class HealCommand implements CommandExecutor {
 		@SuppressWarnings("deprecation")
 		Player targetPlayer = plugin.getServer().getPlayer(args[0]);
 		if(targetPlayer == null){
-			player.sendMessage(ChatColor.RED + "That player is not online!");
+			player.sendMessage(ChatColor.RED + "Error: That player is not online!");
 			return true;
 		}
 		if(args.length == 1){
@@ -66,7 +66,7 @@ public class HealCommand implements CommandExecutor {
 			}
 		}
 		if(args.length >= 2){
-			player.sendMessage(ChatColor.RED + "Too many arguments!");
+			player.sendMessage(ChatColor.RED + "Error: Too many arguments!");
 			return false;
 		}
 		return false;

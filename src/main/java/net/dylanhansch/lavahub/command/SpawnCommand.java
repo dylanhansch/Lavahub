@@ -18,7 +18,7 @@ public class SpawnCommand implements CommandExecutor{
     
     public boolean onCommand(CommandSender sender, Command cmd, String commandLable, String[] args){
         if(!(sender instanceof Player)){
-            sender.sendMessage(ChatColor.RED + "Not executable by console!");
+            sender.sendMessage(ChatColor.RED + "Error: Not executable by console!");
             return true;
         }
         Player player = (Player) sender;
@@ -50,7 +50,7 @@ public class SpawnCommand implements CommandExecutor{
                 player.sendMessage(ChatColor.DARK_RED + "You do not have lavahub.spawn");
                 return true;
             } else {
-                player.sendMessage(ChatColor.RED + "Too many arguments!");
+                player.sendMessage(ChatColor.RED + "Error: Too many arguments!");
                 return true;
             }
         }

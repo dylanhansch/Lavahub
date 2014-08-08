@@ -21,7 +21,7 @@ public class GamemodeCommand implements CommandExecutor {
 			@SuppressWarnings("deprecation")
 			Player targetPlayer = plugin.getServer().getPlayer(args[1]);
 			if(targetPlayer == null){
-				sender.sendMessage(ChatColor.RED + "That player is not online!");
+				sender.sendMessage(ChatColor.RED + "Error: That player is not online!");
 				return true;
 			}
 			if(args[0].equalsIgnoreCase("0") || args[0].equalsIgnoreCase("survival")){
@@ -46,7 +46,7 @@ public class GamemodeCommand implements CommandExecutor {
 				player.sendMessage(ChatColor.DARK_RED + "You do not have lavahub.gamemode");
 				return true;
 			} else {
-				player.sendMessage(ChatColor.RED + "Not enough arguments!");
+				player.sendMessage(ChatColor.RED + "Error: Not enough arguments!");
 				return false;
 			}	
 		}
@@ -80,7 +80,7 @@ public class GamemodeCommand implements CommandExecutor {
 				return true;
 			} else {
 				if(targetPlayer == null){
-					player.sendMessage(ChatColor.RED + "That player is not online!");
+					player.sendMessage(ChatColor.RED + "Error: That player is not online!");
 					return true;
 				}
 				if(args[0].equalsIgnoreCase("0") || args[0].equalsIgnoreCase("survival")){
@@ -107,7 +107,7 @@ public class GamemodeCommand implements CommandExecutor {
 					player.sendMessage(ChatColor.DARK_RED + "You do not have lavahub.gamemode");
 					return true;
 				} else {
-					player.sendMessage(ChatColor.RED + "Too many arguments!");
+					player.sendMessage(ChatColor.RED + "Error: Too many arguments!");
 					return false;
 				}
 			}

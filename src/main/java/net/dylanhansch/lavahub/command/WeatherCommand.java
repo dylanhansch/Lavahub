@@ -20,7 +20,7 @@ public class WeatherCommand implements CommandExecutor {
 		if(!(sender instanceof Player)){
 			World targetWorld = plugin.getServer().getWorld(args[1]);
 			if(targetWorld == null){
-				sender.sendMessage(ChatColor.RED + "That world does not excist!");
+				sender.sendMessage(ChatColor.RED + "Error: That world does not excist!");
 				return true;
 			}
 			if(args[0].equalsIgnoreCase("rain") || args[0].equalsIgnoreCase("storm")){
@@ -49,7 +49,7 @@ public class WeatherCommand implements CommandExecutor {
 				player.sendMessage(ChatColor.DARK_RED + "You do not have lavahub.weather");
 				return true;
 			} else {
-				player.sendMessage(ChatColor.RED + "Not enough arguments!");
+				player.sendMessage(ChatColor.RED + "Error: Not enough arguments!");
 				return false;
 			}
 		}
@@ -88,7 +88,7 @@ public class WeatherCommand implements CommandExecutor {
 				return true;
 			} else {
 				if(targetWorld == null){
-					player.sendMessage(ChatColor.RED + "That world does not excist!");
+					player.sendMessage(ChatColor.RED + "Error: That world does not excist!");
 					return true;
 				}
 				if(args[0].equalsIgnoreCase("rain") || args[0].equalsIgnoreCase("storm")){
@@ -119,7 +119,7 @@ public class WeatherCommand implements CommandExecutor {
 				player.sendMessage(ChatColor.DARK_RED + "You do not have lavahub.weather");
 				return true;
 			} else {
-				player.sendMessage(ChatColor.RED + "Too many arguments!");
+				player.sendMessage(ChatColor.RED + "Error: Too many arguments!");
 				return false;
 			}
 		}
