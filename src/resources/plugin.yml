@@ -23,6 +23,9 @@ commands:
     lavahub:
         description: Reload Lavahub configuration from disk
         usage: /<command>
+    player:
+        description: View information about a player
+        usage: /<command> <player>
     rawmsg:
         description: Send raw message
         usage: /<command> <message>
@@ -58,7 +61,13 @@ permissions:
         default: op
     lavahub.gamemode.others:
         default: op
+    lavahub.heal:
+        default: op
+    lavahub.heal.others:
+        default: op
     lavahub.reload:
+        default: op
+    lavahub.player:
         default: op
     lavahub.rawmsg:
         default: op
