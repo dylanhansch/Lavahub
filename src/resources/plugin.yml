@@ -36,11 +36,11 @@ commands:
         description: Set world time
         usage: /<command> <day/noon/night>
     teleport:
-        description: Teleport to specififed player
-        usage: /<command> <targetPlayer> <Second targetPlayer>
+        description: Teleport to a player
+        usage: /<command> <player> <otherplayer>
         aliases: [tp]
     tphere:
-        description: Teleport player to you
+        description: Teleport a player to you
         usage: /<command> <player>
     weather:
         description: Set weather in a world

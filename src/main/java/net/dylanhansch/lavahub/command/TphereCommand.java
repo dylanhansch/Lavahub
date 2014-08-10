@@ -17,7 +17,7 @@ public class TphereCommand implements CommandExecutor {
 	
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLable, String[] args){
 		if(!(sender instanceof Player)){
-			sender.sendMessage(ChatColor.RED + "Error: Command cannot be executed by console.");
+			sender.sendMessage(ChatColor.RED + "Error: Not executable by console!");
 			return true;
 		}
 		Player player = (Player) sender;
