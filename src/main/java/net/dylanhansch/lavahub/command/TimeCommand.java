@@ -18,25 +18,39 @@ public class TimeCommand implements CommandExecutor {
 
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLable, String[] args){
 		if(!(sender instanceof Player)){
-			World targetWorld = plugin.getServer().getWorld(args[1]);
-			if(targetWorld == null){
-				sender.sendMessage(ChatColor.RED + "Error: That world does not excist!");
-				return true;
+			if(args.length == 0){
+				sender.sendMessage(ChatColor.RED + "Error: Not enough arguments!");
+				return false;
 			}
-			if(args[0].equalsIgnoreCase("day")){
-				targetWorld.setTime(0);
-				sender.sendMessage(ChatColor.GOLD + "Changed time to " + ChatColor.RED + "day" + ChatColor.GOLD + " in '" + ChatColor.RED + targetWorld.getName() + ChatColor.GOLD + "'.");
-				return true;
+			if(args.length == 1){
+				sender.sendMessage(ChatColor.RED + "Error: Not executable by console!");
+				return false;
 			}
-			if(args[0].equalsIgnoreCase("noon")){
-				targetWorld.setTime(6000);
-				sender.sendMessage(ChatColor.GOLD + "Changed time to " + ChatColor.RED + "noon" + ChatColor.GOLD + " in '" + ChatColor.RED + targetWorld.getName() + ChatColor.GOLD + "'.");
-				return true;
+			if(args.length == 2){
+				World targetWorld = plugin.getServer().getWorld(args[1]);
+				if(targetWorld == null){
+					sender.sendMessage(ChatColor.RED + "Error: That world does not excist!");
+					return true;
+				}
+				if(args[0].equalsIgnoreCase("day")){
+					targetWorld.setTime(0);
+					sender.sendMessage(ChatColor.GOLD + "Changed time to " + ChatColor.RED + "day" + ChatColor.GOLD + " in '" + ChatColor.RED + targetWorld.getName() + ChatColor.GOLD + "'.");
+					return true;
+				}else if(args[0].equalsIgnoreCase("noon")){
+					targetWorld.setTime(6000);
+					sender.sendMessage(ChatColor.GOLD + "Changed time to " + ChatColor.RED + "noon" + ChatColor.GOLD + " in '" + ChatColor.RED + targetWorld.getName() + ChatColor.GOLD + "'.");
+					return true;
+				}else if(args[0].equalsIgnoreCase("night")){
+					targetWorld.setTime(14000);
+					sender.sendMessage(ChatColor.GOLD + "Changed time to " + ChatColor.RED + "night" + ChatColor.GOLD + " in '" + ChatColor.RED + targetWorld.getName() + ChatColor.GOLD + "'.");
+					return true;
+				}else{
+					return false;
+				}
 			}
-			if(args[0].equalsIgnoreCase("night")){
-				targetWorld.setTime(14000);
-				sender.sendMessage(ChatColor.GOLD + "Changed time to " + ChatColor.RED + "night" + ChatColor.GOLD + " in '" + ChatColor.RED + targetWorld.getName() + ChatColor.GOLD + "'.");
-				return true;
+			if(args.length >= 3){
+				sender.sendMessage(ChatColor.RED + "Error: Too many arguments!");
+				return false;
 			}
 		}
 		Player player = (Player) sender;
@@ -59,26 +73,18 @@ public class TimeCommand implements CommandExecutor {
 					world.setTime(0);
 					sender.sendMessage(ChatColor.GOLD + "Changed time to " + ChatColor.RED + "day" + ChatColor.GOLD + ".");
 					return true;
-				}
-				if(args[0].equalsIgnoreCase("noon")){
+				}else if(args[0].equalsIgnoreCase("noon")){
 					world.setTime(6000);
 					sender.sendMessage(ChatColor.GOLD + "Changed time to " + ChatColor.RED + "noon" + ChatColor.GOLD + ".");
 					return true;
-				}
-				if(args[0].equalsIgnoreCase("night")){
+				}else if(args[0].equalsIgnoreCase("night")){
 					world.setTime(14000);
 					sender.sendMessage(ChatColor.GOLD + "Changed time to " + ChatColor.RED + "night" + ChatColor.GOLD + ".");
 					return true;
-				}
-				/*if(args[0].equalsIgnoreCase("set")){
-					world.
-				}*/
-				if(!args[0].equalsIgnoreCase("day") || !args[0].equalsIgnoreCase("noon") || !args[0].equalsIgnoreCase("night")){
+				}else{
 					return false;
-				}
-				
+				}	
 			}
-			
 		}
 		World targetWorld = plugin.getServer().getWorld(args[1]);
 		if(args.length == 2){
@@ -94,18 +100,15 @@ public class TimeCommand implements CommandExecutor {
 					targetWorld.setTime(0);
 					sender.sendMessage(ChatColor.GOLD + "Changed time to " + ChatColor.RED + "day" + ChatColor.GOLD + " in '" + ChatColor.RED + targetWorld.getName() + ChatColor.GOLD + "'.");
 					return true;
-				}
-				if(args[0].equalsIgnoreCase("noon")){
+				}else if(args[0].equalsIgnoreCase("noon")){
 					targetWorld.setTime(6000);
 					sender.sendMessage(ChatColor.GOLD + "Changed time to " + ChatColor.RED + "noon" + ChatColor.GOLD + " in '" + ChatColor.RED + targetWorld.getName() + ChatColor.GOLD + "'.");
 					return true;
-				}
-				if(args[0].equalsIgnoreCase("night")){
+				}else if(args[0].equalsIgnoreCase("night")){
 					targetWorld.setTime(14000);
 					sender.sendMessage(ChatColor.GOLD + "Changed time to " + ChatColor.RED + "night" + ChatColor.GOLD + " in '" + ChatColor.RED + targetWorld.getName() + ChatColor.GOLD + "'.");
 					return true;
-				}
-				if(!args[0].equalsIgnoreCase("day") || !args[0].equalsIgnoreCase("noon") || !args[0].equalsIgnoreCase("night")){
+				}else{
 					return false;
 				}
 			}

@@ -19,7 +19,7 @@ public class HealCommand implements CommandExecutor {
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLable, String[] args){
 		if(!(sender instanceof Player)){
 			if(args.length == 0){
-				sender.sendMessage(ChatColor.RED + "Not executable by console!");
+				sender.sendMessage(ChatColor.RED + "Error: Not executable by console!");
 				return true;
 			}
 			@SuppressWarnings("deprecation")

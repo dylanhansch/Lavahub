@@ -11,15 +11,15 @@ commands:
         aliases: [me]
     clearinventory:
         description: Clear player inventory
-        usage: /<command> <player>
+        usage: /<command> [player]
         aliases: [ci, clear]
     gamemode:
         description: Change player gamemode
-        usage: /<command> <mode> <player>
+        usage: /<command> <mode> [player]
         aliases: [gm]
     heal:
         description: Heal player
-        usage: /<command> <player>
+        usage: /<command> [player]
     lavahub:
         description: Reload Lavahub configuration from disk
         usage: /<command>
@@ -34,20 +34,20 @@ commands:
         usage: /<command>
     spawn:
         description: Teleport to server spawn
-        usage: /<command> <player>
+        usage: /<command> [player]
     time:
         description: Set world time
-        usage: /<command> <day/noon/night>
+        usage: /<command> <day/noon/night> [world]
     teleport:
         description: Teleport to a player
-        usage: /<command> <player> <otherplayer>
+        usage: /<command> <player> [player]
         aliases: [tp]
     tphere:
         description: Teleport a player to you
         usage: /<command> <player>
     weather:
         description: Set weather in a world
-        usage: /<command> <clear/sun/rain/storm/thunder> <world>
+        usage: /<command> <clear/sun/rain/storm/thunder> [world]
 permissions:
     lavahub.*:
         default: op
