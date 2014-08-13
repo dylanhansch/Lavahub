@@ -40,7 +40,7 @@ public class ActionCommand implements CommandExecutor{
 				String name = sender.getName();
 				if (sender instanceof Player)
 					name = ((Player) sender).getDisplayName();
-				plugin.getServer().broadcastMessage(String.format("* %s %s", name, message));
+				plugin.getServer().broadcastMessage(String.format("* %s %s *", name, message));
 				return true;
 			}
 			
