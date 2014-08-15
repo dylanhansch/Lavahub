@@ -4,6 +4,7 @@ import net.dylanhansch.lavahub.command.ActionCommand;
 import net.dylanhansch.lavahub.command.ClearInventoryCommand;
 import net.dylanhansch.lavahub.command.GamemodeCommand;
 import net.dylanhansch.lavahub.command.HealCommand;
+import net.dylanhansch.lavahub.command.KickCommand;
 import net.dylanhansch.lavahub.command.LavahubCommand;
 import net.dylanhansch.lavahub.command.PlayerCommand;
 import net.dylanhansch.lavahub.command.RawmsgCommand;
@@ -39,6 +40,7 @@ public class Lavahub extends JavaPlugin implements Listener {
 		getCommand("clearinventory").setExecutor(new ClearInventoryCommand(this));
 		getCommand("gamemode").setExecutor(new GamemodeCommand(this));
 		getCommand("heal").setExecutor(new HealCommand(this));
+		getCommand("kick").setExecutor(new KickCommand(this));
 		getCommand("lavahub").setExecutor(new LavahubCommand(this));
 		getCommand("player").setExecutor(new PlayerCommand(this));
 		getCommand("rawmsg").setExecutor(new RawmsgCommand(this));
@@ -89,6 +91,7 @@ public class Lavahub extends JavaPlugin implements Listener {
 		}
 		return false;
 	}
+	
 	@EventHandler
 	public boolean onPlayerRespawn(PlayerRespawnEvent event){
 		final Player player = event.getPlayer();
@@ -120,6 +123,5 @@ public class Lavahub extends JavaPlugin implements Listener {
             return false;
         }
         return false;
-	}
-	
+	}	
 }

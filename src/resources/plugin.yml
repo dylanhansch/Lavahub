@@ -20,6 +20,9 @@ commands:
     heal:
         description: Heal player
         usage: /<command> [player]
+    kick:
+        description: Kick player
+        usage: /<command> <player>
     lavahub:
         description: Reload Lavahub configuration from disk
         usage: /<command>
@@ -50,38 +53,24 @@ commands:
         usage: /<command> <clear/sun/rain/storm/thunder> [world]
 permissions:
     lavahub.*:
+        description: Lavahub Admin
         default: op
-    lavahub.action:
-        default: op
-    lavahub.clearinventory:
-        default: op
-    lavahub.clearinventory.others:
-        default: op
-    lavahub.gamemode:
-        default: op
-    lavahub.gamemode.others:
-        default: op
-    lavahub.heal:
-        default: op
-    lavahub.heal.others:
-        default: op
-    lavahub.reload:
-        default: op
-    lavahub.player:
-        default: op
-    lavahub.rawmsg:
-        default: op
-    lavahub.setspawn:
-        default: op
-    lavahub.spawn:
-        default: op
-    lavahub.time:
-        default: op
-    lavahub.tp:
-        default: op
-    lavahub.tp.others:
-        default: op
-    lavahub.tphere:
-        default: op
-    lavahub.weather:
-        default: op
+        children:
+            lavahub.action: true
+            lavahub.clearinventory: true
+            lavahub.clearinventory.others: true
+            lavahub.gamemode: true
+            lavahub.gamemode.others: true
+            lavahub.heal: true
+            lavahub.heal.others: true
+            lavahub.kick: true
+            lavahub.reload: true
+            lavahub.player: true
+            lavahub.rawmsg: true
+            lavahub.setspawn: true
+            lavahub.spawn: true
+            lavahub.time: true
+            lavahub.teleport: true
+            lavahub.teleport.others: true
+            lavahub.tphere: true
+            lavahub.weather: true
