@@ -9,6 +9,9 @@ commands:
         description: Send action message
         usage: /<command> <message>
         aliases: [me]
+    ban:
+        description: Ban a player
+        usage: /<command> <player> [reason]
     clearinventory:
         description: Clear player inventory
         usage: /<command> [player]
@@ -22,7 +25,7 @@ commands:
         usage: /<command> [player]
     kick:
         description: Kick player
-        usage: /<command> <player>
+        usage: /<command> <player> [reason]
     lavahub:
         description: Reload Lavahub configuration from disk
         usage: /<command>
@@ -48,6 +51,10 @@ commands:
     tphere:
         description: Teleport a player to you
         usage: /<command> <player>
+    unban:
+        description: Unban a player
+        usage: /<command> <player>
+        aliases: [pardon]
     weather:
         description: Set weather in a world
         usage: /<command> <clear/sun/rain/storm/thunder> [world]
