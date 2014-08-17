@@ -17,11 +17,6 @@ public class KickCommand implements CommandExecutor {
 	
 	@SuppressWarnings("deprecation")
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLable, String[] args){
-		Player targetPlayer = plugin.getServer().getPlayer(args[0]);
-		if(targetPlayer == null){
-			sender.sendMessage(ChatColor.RED + "Error: That player is not online!");
-			return true;
-		}
 		if(args.length == 0){
 			if(!sender.hasPermission("lavahub.kick")){
 				sender.sendMessage(ChatColor.DARK_RED + "You do not have lavahub.kick");
@@ -36,6 +31,11 @@ public class KickCommand implements CommandExecutor {
 				sender.sendMessage(ChatColor.DARK_RED + "You do not have lavahub.kick");
 				return true;
 			}else{
+				Player targetPlayer = plugin.getServer().getPlayer(args[0]);
+				if(targetPlayer == null){
+					sender.sendMessage(ChatColor.RED + "Error: That player is not online!");
+					return true;
+				}
 				String message = String.format("%s has been kicked by %s for: %s",
                         targetPlayer.getDisplayName() + ChatColor.GOLD,
                         ChatColor.RESET + sender.getName() + ChatColor.GOLD,
@@ -51,6 +51,11 @@ public class KickCommand implements CommandExecutor {
 				sender.sendMessage(ChatColor.DARK_RED + "You do not have lavahub.kick");
 				return true;
 			}else{
+				Player targetPlayer = plugin.getServer().getPlayer(args[0]);
+				if(targetPlayer == null){
+					sender.sendMessage(ChatColor.RED + "Error: That player is not online!");
+					return true;
+				}
 				StringBuilder kickReason = new StringBuilder();
                 for (int i = 1; i < args.length; ++i) {
                     if (i > 1)
