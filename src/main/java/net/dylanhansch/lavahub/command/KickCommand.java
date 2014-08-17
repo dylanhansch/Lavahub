@@ -36,8 +36,13 @@ public class KickCommand implements CommandExecutor {
 				sender.sendMessage(ChatColor.DARK_RED + "You do not have lavahub.kick");
 				return true;
 			}else{
-				plugin.getServer().broadcastMessage(sender.getServer().getPlayer(args[0]).getDisplayName() + ChatColor.GOLD + " has been kicked by " + ChatColor.RESET + sender.getName() + ChatColor.GOLD + " for: " + ChatColor.RESET + "You have been kicked.");
-				sender.getServer().getPlayer(args[0]).kickPlayer("You have been kicked.");
+				String message = String.format("%s has been kicked by %s for: %s",
+                        targetPlayer.getDisplayName() + ChatColor.GOLD,
+                        ChatColor.RESET + sender.getName() + ChatColor.GOLD,
+                        ChatColor.RESET + "You have been kicked.");
+				
+				sender.getServer().broadcastMessage(message);
+				targetPlayer.kickPlayer("You have been kicked.");
 				return true;
 			}
 		}
@@ -53,7 +58,7 @@ public class KickCommand implements CommandExecutor {
                     kickReason.append(args[i]);
                 }
                 String reason = kickReason.toString();
-                String message = String.format("%s has been kicked by %s for: %s.",
+                String message = String.format("%s has been kicked by %s for: %s",
                                     targetPlayer.getDisplayName() + ChatColor.GOLD,
                                     ChatColor.RESET + sender.getName() + ChatColor.GOLD,
                                     ChatColor.RESET + reason);
