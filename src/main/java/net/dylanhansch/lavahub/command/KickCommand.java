@@ -37,12 +37,12 @@ public class KickCommand implements CommandExecutor {
 					return true;
 				}
 				String message = String.format("%s has been kicked by %s for: %s",
-                        targetPlayer.getDisplayName() + ChatColor.GOLD,
-                        ChatColor.RESET + sender.getName() + ChatColor.GOLD,
+                        ChatColor.RED + targetPlayer.getName() + ChatColor.GOLD,
+                        ChatColor.GREEN + sender.getName() + ChatColor.GOLD,
                         ChatColor.RESET + "You have been kicked.");
 				
-				sender.getServer().broadcastMessage(message);
 				targetPlayer.kickPlayer("You have been kicked.");
+				sender.getServer().broadcastMessage(message);
 				return true;
 			}
 		}
@@ -64,12 +64,11 @@ public class KickCommand implements CommandExecutor {
                 }
                 String reason = kickReason.toString();
                 String message = String.format("%s has been kicked by %s for: %s",
-                                    targetPlayer.getDisplayName() + ChatColor.GOLD,
-                                    ChatColor.RESET + sender.getName() + ChatColor.GOLD,
-                                    ChatColor.RESET + reason);
-
-                sender.getServer().broadcastMessage(message);
+                		ChatColor.RED + targetPlayer.getName() + ChatColor.GOLD,
+                        ChatColor.GREEN + sender.getName() + ChatColor.GOLD,
+                        ChatColor.RESET + reason);
                 targetPlayer.kickPlayer(kickReason.toString());
+                sender.getServer().broadcastMessage(message);
                 return true;
 			}
 		}

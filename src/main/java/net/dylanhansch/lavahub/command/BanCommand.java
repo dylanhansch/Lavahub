@@ -3,10 +3,10 @@ package net.dylanhansch.lavahub.command;
 import net.dylanhansch.lavahub.Lavahub;
 
 import org.bukkit.ChatColor;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 
 public class BanCommand implements CommandExecutor {
 	private final Lavahub plugin;
@@ -31,14 +31,17 @@ public class BanCommand implements CommandExecutor {
 				sender.sendMessage(ChatColor.DARK_RED + "You do not have lavahub.ban");
 				return true;
 			}else{
-				Player targetPlayer = plugin.getServer().getPlayer(args[0]);
+				OfflinePlayer targetPlayer = plugin.getServer().getOfflinePlayer(args[0]);
 				String message = String.format("%s has been banned by %s for: %s",
-                        targetPlayer.getDisplayName() + ChatColor.GOLD,
-                        ChatColor.RESET + sender.getName() + ChatColor.GOLD,
-                        ChatColor.RESET + "You have been banned.");
-				
+						ChatColor.RED + targetPlayer.getName() + ChatColor.GOLD,
+						ChatColor.GREEN + sender.getName() + ChatColor.GOLD,
+						ChatColor.RESET + "You have been banned.");
+					
 				sender.getServer().broadcastMessage(message);
-				targetPlayer.kickPlayer(ChatColor.RED + "Banned: " + ChatColor.RESET + "You have been banned.");
+				if(!(sender.getServer().getPlayer(args[0]) == null)){
+					sender.getServer().getPlayer(args[0]).kickPlayer(ChatColor.RED + "Banned: " + ChatColor.RESET + "You have been banned. \n " +
+							"Appeal to dylan@dylanhansch.net");
+				}
 				targetPlayer.setBanned(true);
 				return true;
 			}
@@ -48,7 +51,7 @@ public class BanCommand implements CommandExecutor {
 				sender.sendMessage(ChatColor.DARK_RED + "You do not have lavahub.ban");
 				return true;
 			}else{
-				Player targetPlayer = plugin.getServer().getPlayer(args[0]);
+				OfflinePlayer targetPlayer = plugin.getServer().getOfflinePlayer(args[0]);
 				StringBuilder banReason = new StringBuilder();
                 for (int i = 1; i < args.length; ++i) {
                     if (i > 1)
@@ -57,14 +60,17 @@ public class BanCommand implements CommandExecutor {
                 }
                 String reason = banReason.toString();
                 String message = String.format("%s has been banned by %s for: %s.",
-                                    targetPlayer.getDisplayName() + ChatColor.GOLD,
-                                    ChatColor.RESET + sender.getName() + ChatColor.GOLD,
+                                    ChatColor.RED + targetPlayer.getName() + ChatColor.GOLD,
+                                    ChatColor.GREEN + sender.getName() + ChatColor.GOLD,
                                     ChatColor.RESET + reason);
 
                 sender.getServer().broadcastMessage(message);
-                targetPlayer.kickPlayer(ChatColor.RED + "Banned: " + ChatColor.RESET + banReason.toString());
-                targetPlayer.setBanned(true);
-                return true;
+                if(!(sender.getServer().getPlayer(args[0]) == null)){
+					sender.getServer().getPlayer(args[0]).kickPlayer(ChatColor.RED + "Banned: " + ChatColor.RESET + banReason.toString() + "\n" + 
+							"Appeal to dylan@dylanhansch.net");
+				}
+				targetPlayer.setBanned(true);
+				return true;
 			}
 		}
 		return false;

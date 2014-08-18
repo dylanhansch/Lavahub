@@ -3,10 +3,10 @@ package net.dylanhansch.lavahub.command;
 import net.dylanhansch.lavahub.Lavahub;
 
 import org.bukkit.ChatColor;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 
 public class UnbanCommand implements CommandExecutor {
 	private final Lavahub plugin;
@@ -31,10 +31,14 @@ public class UnbanCommand implements CommandExecutor {
 				sender.sendMessage(ChatColor.DARK_RED + "You do not have lavahub.ban");
 				return true;
 			}else{
-				Player targetPlayer = plugin.getServer().getPlayer(args[0]);
+				OfflinePlayer targetPlayer = plugin.getServer().getOfflinePlayer(args[0]);
+				if(targetPlayer == null){
+					sender.sendMessage(ChatColor.RED + "Error: That player does not excist!");
+					return true;
+				}
 				String message = String.format("%s has been unbanned by %s.",
-                        targetPlayer.getDisplayName() + ChatColor.GOLD,
-                        ChatColor.RESET + sender.getName() + ChatColor.GOLD);
+                        ChatColor.RED + targetPlayer.getName() + ChatColor.GOLD,
+                        ChatColor.GREEN + sender.getName() + ChatColor.GOLD);
 				
 				sender.getServer().broadcastMessage(message);
 				targetPlayer.setBanned(false);
