@@ -30,6 +30,7 @@ public class HealCommand implements CommandExecutor {
 			}
 			if(args.length == 1){
 				targetPlayer.setHealth((double)20);
+				targetPlayer.setFoodLevel(20);
 				sender.sendMessage(ChatColor.GOLD + "Healed " + ChatColor.RESET + targetPlayer.getDisplayName() + ChatColor.GOLD + ".");
 				return true;
 			}
@@ -45,6 +46,7 @@ public class HealCommand implements CommandExecutor {
 				return true;
 			} else {
 				player.setHealth((double)20);
+				player.setFoodLevel(20);
 				player.sendMessage(ChatColor.GOLD + "Healed.");
 				return true;
 			}
@@ -61,6 +63,7 @@ public class HealCommand implements CommandExecutor {
 				return true;
 			} else {
 				targetPlayer.setHealth((double)20);
+				targetPlayer.setFoodLevel(20);
 				player.sendMessage(ChatColor.GOLD + "Healed " + ChatColor.RESET + targetPlayer.getDisplayName() + ChatColor.GOLD + ".");
 				return true;
 			}
