@@ -3,7 +3,7 @@ name: Lavahub
 version: 1.0
 description: Master bukkit plugin for the Lavahub Minecraft Server.
 author: Dylan Hansch
-website: http://dylanhansch.net/
+website: https://dylanhansch.net/
 commands:
     action:
         description: Send action message
