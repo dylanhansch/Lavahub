@@ -43,7 +43,7 @@ commands:
         usage: /<command> [player]
     time:
         description: Set world time
-        usage: /<command> <day/noon/night> [world]
+        usage: /<command> <day/noon/night/set> [ticks] [world]
     teleport:
         description: Teleport to a player
         usage: /<command> <player> [player]
