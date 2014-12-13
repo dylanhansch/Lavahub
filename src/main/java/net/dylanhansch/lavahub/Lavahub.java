@@ -10,11 +10,13 @@ import net.dylanhansch.lavahub.command.LavahubCommand;
 import net.dylanhansch.lavahub.command.PlayerCommand;
 import net.dylanhansch.lavahub.command.RawmsgCommand;
 import net.dylanhansch.lavahub.command.SetSpawnCommand;
+import net.dylanhansch.lavahub.command.SetwarpCommand;
 import net.dylanhansch.lavahub.command.SpawnCommand;
 import net.dylanhansch.lavahub.command.TpCommand;
 import net.dylanhansch.lavahub.command.TimeCommand;
 import net.dylanhansch.lavahub.command.TphereCommand;
 import net.dylanhansch.lavahub.command.UnbanCommand;
+import net.dylanhansch.lavahub.command.WarpCommand;
 import net.dylanhansch.lavahub.command.WeatherCommand;
 
 import org.bukkit.Bukkit;
@@ -48,11 +50,13 @@ public class Lavahub extends JavaPlugin implements Listener {
 		getCommand("player").setExecutor(new PlayerCommand(this));
 		getCommand("rawmsg").setExecutor(new RawmsgCommand(this));
 		getCommand("setspawn").setExecutor(new SetSpawnCommand(this));
+		getCommand("setwarp").setExecutor(new SetwarpCommand(this));
 		getCommand("spawn").setExecutor(new SpawnCommand(this));
 		getCommand("time").setExecutor(new TimeCommand(this));
 		getCommand("teleport").setExecutor(new TpCommand(this));
 		getCommand("tphere").setExecutor(new TphereCommand(this));
 		getCommand("unban").setExecutor(new UnbanCommand(this));
+		getCommand("warp").setExecutor(new WarpCommand(this));
 		getCommand("weather").setExecutor(new WeatherCommand(this));
 	}
 

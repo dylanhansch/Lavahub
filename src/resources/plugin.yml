@@ -38,6 +38,9 @@ commands:
     setspawn:
         description: Set server spawn
         usage: /<command>
+    setwarp:
+        description: Set a warp
+        usage: /<command> <name>
     spawn:
         description: Teleport to server spawn
         usage: /<command> [player]
@@ -55,6 +58,9 @@ commands:
         description: Unban a player
         usage: /<command> <player>
         aliases: [pardon]
+    warp:
+        description: List and teleport to warps
+        usage: /<command> <warp>
     weather:
         description: Set weather in a world
         usage: /<command> <clear/sun/rain/storm/thunder> [world]
@@ -75,9 +81,11 @@ permissions:
             lavahub.player: true
             lavahub.rawmsg: true
             lavahub.setspawn: true
+            lavahub.setwarp: true
             lavahub.spawn: true
             lavahub.time: true
             lavahub.teleport: true
             lavahub.teleport.others: true
             lavahub.tphere: true
+            lavahub.warp: true
             lavahub.weather: true
