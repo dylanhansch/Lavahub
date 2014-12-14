@@ -44,7 +44,7 @@ public class SetwarpCommand implements CommandExecutor {
                 plugin.getConfig().set("warps." + args[0] + ".yaw", player.getLocation().getYaw());
                 plugin.getConfig().set("warps." + args[0] + ".pitch", player.getLocation().getPitch());
                 plugin.saveConfig();
-                player.sendMessage(ChatColor.GOLD + "Warp " + args[0] +  " set.");
+                player.sendMessage(ChatColor.GOLD + "Warp " + ChatColor.RESET + args[0] + ChatColor.GOLD + " set.");
                 return true;
             }
 		}
