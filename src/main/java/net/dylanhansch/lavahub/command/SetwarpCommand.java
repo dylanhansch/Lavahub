@@ -23,18 +23,18 @@ public class SetwarpCommand implements CommandExecutor {
 		
 		Player player = (Player) sender;
 		if(args.length == 0 || args.length >= 2){
-			if(!player.hasPermission("lavahub.setwarp")){
-                player.sendMessage(ChatColor.DARK_RED + "You do not have lavahub.setwarp");
+			if(!sender.hasPermission("lavahub.setwarp")){
+                sender.sendMessage(ChatColor.DARK_RED + "You do not have lavahub.setwarp");
                 return true;
             }else{
-            	player.sendMessage(ChatColor.RED + "Error: Not enough or too many arguments!");
+            	sender.sendMessage(ChatColor.RED + "Error: Not enough or too many arguments!");
             	return false;
             }
 		}
 		
 		if(args.length == 1){
-			if(!player.hasPermission("lavahub.setwarp")){
-                player.sendMessage(ChatColor.DARK_RED + "You do not have lavahub.setwarp");
+			if(!sender.hasPermission("lavahub.setwarp")){
+                sender.sendMessage(ChatColor.DARK_RED + "You do not have lavahub.setwarp");
                 return true;
             }else{
             	plugin.getConfig().set("warps." + args[0] + ".world", player.getLocation().getWorld().getName());
@@ -44,7 +44,7 @@ public class SetwarpCommand implements CommandExecutor {
                 plugin.getConfig().set("warps." + args[0] + ".yaw", player.getLocation().getYaw());
                 plugin.getConfig().set("warps." + args[0] + ".pitch", player.getLocation().getPitch());
                 plugin.saveConfig();
-                player.sendMessage(ChatColor.GOLD + "Warp " + ChatColor.RESET + args[0] + ChatColor.GOLD + " set.");
+                sender.sendMessage(ChatColor.GOLD + "Warp " + ChatColor.RESET + args[0] + ChatColor.GOLD + " set.");
                 return true;
             }
 		}

@@ -6,7 +6,6 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 
 public class DelwarpCommand implements CommandExecutor{
 	private final Lavahub plugin;
@@ -16,12 +15,6 @@ public class DelwarpCommand implements CommandExecutor{
 	}
 	
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLable, String[] args){
-		if(!(sender instanceof Player)){
-			sender.sendMessage(ChatColor.RED + "Error: Not executable by console!");
-			return true;
-		}
-		
-		Player player = (Player) sender;
 		if(args.length == 0 || args.length >= 2){
 			if(!sender.hasPermission("lavahub.delwarp")){
 				sender.sendMessage(ChatColor.DARK_RED + "You do not have lavahub.action");
@@ -37,9 +30,14 @@ public class DelwarpCommand implements CommandExecutor{
 				sender.sendMessage(ChatColor.DARK_RED + "You do not have lavahub.action");
 				return true;
 			}else{
+				Object warp = plugin.getConfig().getConfigurationSection("warps").get(args[0]);
+				if(warp == null){
+					sender.sendMessage(ChatColor.RED + "Error: That warp does not exist.");
+					return true;
+				}
 				plugin.getConfig().getConfigurationSection("warps").set(args[0], null);
                 plugin.saveConfig();
-                player.sendMessage(ChatColor.GOLD + "Warp " + ChatColor.RESET + args[0] + ChatColor.GOLD + " removed.");
+                sender.sendMessage(ChatColor.GOLD + "Warp " + ChatColor.RESET + args[0] + ChatColor.GOLD + " removed.");
 				return true;
 			}
 			

@@ -22,24 +22,8 @@ public class WarpCommand implements CommandExecutor {
 	
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLable, String[] args){
 		if(!(sender instanceof Player)){
-			sender.sendMessage(ChatColor.RED + "Error: Not executable by console!");
-			return true;
-		}
-		
-		Player player = (Player) sender;
-		if(args.length >= 2){
-			if(!player.hasPermission("lavahub.warp")){
-                player.sendMessage(ChatColor.DARK_RED + "You do not have lavahub.warp");
-                return true;
-            }else{
-            	player.sendMessage(ChatColor.RED + "Error: Not enough or too many arguments!");
-            	return false;
-            }
-		}
-		
-		if(args.length == 0){
-			if(!player.hasPermission("lavahub.warp")){
-				player.sendMessage(ChatColor.DARK_RED + "You do not have lavahub.warp");
+			if(args.length != 0){
+				sender.sendMessage(ChatColor.RED + "Error: Not executable by console!");
 				return true;
 			}else{
 				Set<String> warps = plugin.getConfig().getConfigurationSection("warps").getKeys(false);
@@ -52,18 +36,49 @@ public class WarpCommand implements CommandExecutor {
 					else
 						warpsList.append(".");
 				}
-				player.sendMessage(ChatColor.GOLD + "Warps: " + ChatColor.RESET + warpsList.toString());
+				sender.sendMessage(ChatColor.GOLD + "Warps: " + ChatColor.RESET + warpsList.toString());
+				return true;
+			}
+		}
+		
+		Player player = (Player) sender;
+		if(args.length >= 2){
+			if(!sender.hasPermission("lavahub.warp")){
+                sender.sendMessage(ChatColor.DARK_RED + "You do not have lavahub.warp");
+                return true;
+            }else{
+            	sender.sendMessage(ChatColor.RED + "Error: Not enough or too many arguments!");
+            	return false;
+            }
+		}
+		
+		if(args.length == 0){
+			if(!sender.hasPermission("lavahub.warp")){
+				sender.sendMessage(ChatColor.DARK_RED + "You do not have lavahub.warp");
+				return true;
+			}else{
+				Set<String> warps = plugin.getConfig().getConfigurationSection("warps").getKeys(false);
+				StringBuilder warpsList = new StringBuilder();
+				for (Iterator<String> it = warps.iterator(); it.hasNext();) {
+					String warp = it.next();
+					warpsList.append(warp);
+					if (it.hasNext())
+						warpsList.append(", ");
+					else
+						warpsList.append(".");
+				}
+				sender.sendMessage(ChatColor.GOLD + "Warps: " + ChatColor.RESET + warpsList.toString());
 				return true;
 			}
 		}
 		
 		if(args.length == 1){
-			if(!player.hasPermission("lavahub.warp")){
-                player.sendMessage(ChatColor.DARK_RED + "You do not have lavahub.warp");
+			if(!sender.hasPermission("lavahub.warp")){
+                sender.sendMessage(ChatColor.DARK_RED + "You do not have lavahub.warp");
                 return true;
             }else{
             	if(plugin.getConfig().getString("warps." + args[0]) == null){
-            		player.sendMessage(ChatColor.RED + "Error: That warp does not exist.");
+            		sender.sendMessage(ChatColor.RED + "Error: That warp does not exist.");
             		return true;
             	}else{
             		 World world = plugin.getServer().getWorld(plugin.getConfig().getString("warps." + args[0] + ".world"));
