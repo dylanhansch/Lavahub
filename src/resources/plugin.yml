@@ -16,6 +16,9 @@ commands:
         description: Clear player inventory
         usage: /<command> [player]
         aliases: [ci, clear]
+    delwarp:
+        description: Delete a warp
+        usage: /<command> <warp>
     gamemode:
         description: Change player gamemode
         usage: /<command> <mode> [player]
@@ -72,6 +75,7 @@ permissions:
             lavahub.action: true
             lavahub.clearinventory: true
             lavahub.clearinventory.others: true
+            lavahub.delwarp: true
             lavahub.gamemode: true
             lavahub.gamemode.others: true
             lavahub.heal: true
