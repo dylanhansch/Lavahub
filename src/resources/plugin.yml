@@ -32,6 +32,9 @@ commands:
     lavahub:
         description: Reload Lavahub configuration from disk
         usage: /<command>
+    mute:
+        description: Mute a player
+        usage: /<command> <player>
     player:
         description: View information about a player
         usage: /<command> <player>
@@ -82,6 +85,7 @@ permissions:
             lavahub.heal.others: true
             lavahub.kick: true
             lavahub.reload: true
+            lavahub.mute: true
             lavahub.player: true
             lavahub.rawmsg: true
             lavahub.setspawn: true

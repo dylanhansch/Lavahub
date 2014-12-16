@@ -8,6 +8,7 @@ import net.dylanhansch.lavahub.command.GamemodeCommand;
 import net.dylanhansch.lavahub.command.HealCommand;
 import net.dylanhansch.lavahub.command.KickCommand;
 import net.dylanhansch.lavahub.command.LavahubCommand;
+import net.dylanhansch.lavahub.command.MuteCommand;
 import net.dylanhansch.lavahub.command.PlayerCommand;
 import net.dylanhansch.lavahub.command.RawmsgCommand;
 import net.dylanhansch.lavahub.command.SetSpawnCommand;
@@ -49,6 +50,7 @@ public class Lavahub extends JavaPlugin implements Listener {
 		getCommand("heal").setExecutor(new HealCommand(this));
 		getCommand("kick").setExecutor(new KickCommand(this));
 		getCommand("lavahub").setExecutor(new LavahubCommand(this));
+		getCommand("mute").setExecutor(new MuteCommand(this));
 		getCommand("player").setExecutor(new PlayerCommand(this));
 		getCommand("rawmsg").setExecutor(new RawmsgCommand(this));
 		getCommand("setspawn").setExecutor(new SetSpawnCommand(this));
@@ -99,6 +101,7 @@ public class Lavahub extends JavaPlugin implements Listener {
 		}else{
 			return false;
 		}
+		
 		return false;
 	}
 	
