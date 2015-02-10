@@ -136,5 +136,5 @@ public class Lavahub extends JavaPlugin implements Listener {
             return false;
         }
         return false;
-	}	
+	}
 }
