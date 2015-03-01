@@ -34,16 +34,19 @@ public class GamemodeCommand implements CommandExecutor {
 					return true;
 				}
 				if(args[0].equalsIgnoreCase("0") || args[0].equalsIgnoreCase("survival")){
-						targetPlayer.setGameMode(GameMode.SURVIVAL);
-						sender.sendMessage(ChatColor.GOLD + "Set " + ChatColor.RESET + targetPlayer.getDisplayName() + ChatColor.GOLD + "'s gamemode to " + ChatColor.RED + "survival" + ChatColor.GOLD + ".");
-						return true;
+					targetPlayer.setGameMode(GameMode.SURVIVAL);
+					sender.sendMessage(ChatColor.GOLD + "Set " + ChatColor.RESET + targetPlayer.getDisplayName() + ChatColor.GOLD + "'s gamemode to " + ChatColor.RED + "survival" + ChatColor.GOLD + ".");
+					targetPlayer.sendMessage("Your game mode has been updated");
+					return true;
 				}else if(args[0].equalsIgnoreCase("1") || args[0].equalsIgnoreCase("creative")){
 					targetPlayer.setGameMode(GameMode.CREATIVE);
 					sender.sendMessage(ChatColor.GOLD + "Set " + ChatColor.RESET + targetPlayer.getDisplayName() + ChatColor.GOLD + "'s gamemode to " + ChatColor.RED + "creative" + ChatColor.GOLD + ".");
+					targetPlayer.sendMessage("Your game mode has been updated");
 					return true;
 				}else if(args[0].equalsIgnoreCase("2") || args[0].equalsIgnoreCase("adventure")){
 					targetPlayer.setGameMode(GameMode.ADVENTURE);
 					sender.sendMessage(ChatColor.GOLD + "Set " + ChatColor.RESET + targetPlayer.getDisplayName() + ChatColor.GOLD + "'s gamemode to " + ChatColor.RED + "adventure" + ChatColor.GOLD + ".");
+					targetPlayer.sendMessage("Your game mode has been updated");
 					return true;
 				}else{
 					return false;
@@ -71,12 +74,15 @@ public class GamemodeCommand implements CommandExecutor {
 			} else {
 				if(args[0].equalsIgnoreCase("0") || args[0].equalsIgnoreCase("survival")){
 					player.setGameMode(GameMode.SURVIVAL);
+					player.sendMessage("Your game mode has been updated");
 					return true;
 				}else if(args[0].equalsIgnoreCase("1") || args[0].equalsIgnoreCase("creative")){
 					player.setGameMode(GameMode.CREATIVE);
+					player.sendMessage("Your game mode has been updated");
 					return true;
 				}else if(args[0].equalsIgnoreCase("2") || args[0].equalsIgnoreCase("adventure")){
 					player.setGameMode(GameMode.ADVENTURE);
+					player.sendMessage("Your game mode has been updated");
 					return true;
 				}else{
 					return false;
@@ -97,14 +103,17 @@ public class GamemodeCommand implements CommandExecutor {
 				if(args[0].equalsIgnoreCase("0") || args[0].equalsIgnoreCase("survival")){
 					targetPlayer.setGameMode(GameMode.SURVIVAL);
 					player.sendMessage(ChatColor.GOLD + "Set " + ChatColor.RESET + targetPlayer.getDisplayName() + ChatColor.GOLD + "'s gamemode to " + ChatColor.RED + "survival" + ChatColor.GOLD + ".");
+					targetPlayer.sendMessage("Your game mode has been updated");
 					return true;
 				}else if(args[0].equalsIgnoreCase("1") || args[0].equalsIgnoreCase("creative")){
 					targetPlayer.setGameMode(GameMode.CREATIVE);
 					player.sendMessage(ChatColor.GOLD + "Set " + ChatColor.RESET + targetPlayer.getDisplayName() + ChatColor.GOLD + "'s gamemode to " + ChatColor.RED + "creative" + ChatColor.GOLD + ".");
+					targetPlayer.sendMessage("Your game mode has been updated");
 					return true;
 				}else if(args[0].equalsIgnoreCase("2") || args[0].equalsIgnoreCase("adventure")){
 					targetPlayer.setGameMode(GameMode.ADVENTURE);
 					player.sendMessage(ChatColor.GOLD + "Set " + ChatColor.RESET + targetPlayer.getDisplayName() + ChatColor.GOLD + "'s gamemode to " + ChatColor.RED + "adventure" + ChatColor.GOLD + ".");
+					targetPlayer.sendMessage("Your game mode has been updated");
 					return true;
 				}else{
 					return false;
