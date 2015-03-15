@@ -20,7 +20,7 @@ public class ActionCommand implements CommandExecutor{
 			if(!sender.hasPermission("lavahub.action")){
 				sender.sendMessage(ChatColor.DARK_RED + "You do not have lavahub.action");
 				return true;
-			} else {
+			}else{
 				sender.sendMessage(ChatColor.RED + "Error: Not enough arguments!");
 				return false;
 			}
@@ -29,7 +29,7 @@ public class ActionCommand implements CommandExecutor{
 			if(!sender.hasPermission("lavahub.action")){
 				sender.sendMessage(ChatColor.DARK_RED + "You do not have lavahub.action");
 				return true;
-			} else {
+			}else{
 				StringBuilder message = new StringBuilder("");
 				for (String part : args){
 					if(!message.toString().equals(""))
@@ -43,10 +43,7 @@ public class ActionCommand implements CommandExecutor{
 				plugin.getServer().broadcastMessage(String.format("* %s %s *", name, message));
 				return true;
 			}
-			
 		}
 		return false;
 	}
-	
-
 }
