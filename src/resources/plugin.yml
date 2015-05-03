@@ -1,9 +1,9 @@
-main: net.dylanhansch.lavahub.Lavahub
-name: Lavahub
-version: 1.0
+main: ${main.class}
+name: ${project.name}
+version: ${project.version}
 description: Master bukkit plugin for the Lavahub Minecraft Server.
 author: Dylan Hansch
-website: https://dylanhansch.net/
+website: https://dylanhansch.net
 commands:
     action:
         description: Send action message
