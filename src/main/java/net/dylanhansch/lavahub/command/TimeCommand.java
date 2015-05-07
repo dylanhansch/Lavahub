@@ -30,7 +30,7 @@ public class TimeCommand implements CommandExecutor{
 			if(args.length == 2){
 				World targetWorld = plugin.getServer().getWorld(args[1]);
 				if(targetWorld == null){
-					sender.sendMessage(ChatColor.RED + "Error: That world does not excist!");
+					sender.sendMessage(ChatColor.RED + "Error: That world does not exist!");
 					return true;
 				}
 				if(args[0].equalsIgnoreCase("day")){
@@ -52,7 +52,7 @@ public class TimeCommand implements CommandExecutor{
 			if(args.length == 3){
 				World targetWorld = plugin.getServer().getWorld(args[2]);
 				if(targetWorld == null){
-					sender.sendMessage(ChatColor.RED + "Error: That world does not excist!");
+					sender.sendMessage(ChatColor.RED + "Error: That world does not exist!");
 					return true;
 				}
 				if(args[0].equalsIgnoreCase("set")){
@@ -117,7 +117,7 @@ public class TimeCommand implements CommandExecutor{
 			} else {
 				if(args[0].equalsIgnoreCase("day") || args[0].equalsIgnoreCase("noon") || args[0].equalsIgnoreCase("night")){
 					if(targetWorld == null){
-						sender.sendMessage(ChatColor.RED + "Error: That world does not excist!");
+						sender.sendMessage(ChatColor.RED + "Error: That world does not exist!");
 						return true;
 					}
 				}
@@ -158,7 +158,7 @@ public class TimeCommand implements CommandExecutor{
 				return true;
 			}else{
 				if(tickTargetWorld == null){
-					sender.sendMessage(ChatColor.RED + "Error: That world does not excist!");
+					sender.sendMessage(ChatColor.RED + "Error: That world does not exist!");
 					return true;
 				}
 				if(args[0].equalsIgnoreCase("set")){
