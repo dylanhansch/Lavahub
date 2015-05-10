@@ -1,5 +1,8 @@
 package net.dylanhansch.lavahub;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import net.dylanhansch.lavahub.command.ActionCommand;
 import net.dylanhansch.lavahub.command.BanCommand;
 import net.dylanhansch.lavahub.command.ClearInventoryCommand;
@@ -18,14 +21,18 @@ import net.dylanhansch.lavahub.command.TpCommand;
 import net.dylanhansch.lavahub.command.TimeCommand;
 import net.dylanhansch.lavahub.command.TphereCommand;
 import net.dylanhansch.lavahub.command.UnbanCommand;
+import net.dylanhansch.lavahub.command.UnmuteCommand;
 import net.dylanhansch.lavahub.command.WarpCommand;
 import net.dylanhansch.lavahub.command.WeatherCommand;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
+import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -33,7 +40,9 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 public class Lavahub extends JavaPlugin implements Listener {
-
+	
+	public final HashMap<String, ArrayList<Block>> mutedPlayers = new HashMap<>();
+	
 	@Override
 	public void onDisable() {
 	}
@@ -60,6 +69,7 @@ public class Lavahub extends JavaPlugin implements Listener {
 		getCommand("teleport").setExecutor(new TpCommand(this));
 		getCommand("tphere").setExecutor(new TphereCommand(this));
 		getCommand("unban").setExecutor(new UnbanCommand(this));
+		getCommand("unmute").setExecutor(new UnmuteCommand(this));
 		getCommand("warp").setExecutor(new WarpCommand(this));
 		getCommand("weather").setExecutor(new WeatherCommand(this));
 	}
@@ -136,5 +146,18 @@ public class Lavahub extends JavaPlugin implements Listener {
             return false;
         }
         return false;
+	}
+	
+	@EventHandler
+	public void onPlayerChat(AsyncPlayerChatEvent event){
+		Player player = event.getPlayer();
+		if(mutedPlayers.containsKey(player.getName())){
+			try{
+				event.setCancelled(true);
+			}catch(Exception e){
+				event.setMessage(null);
+			}
+			player.sendMessage(ChatColor.RED + "You are muted!");
+		}
 	}
 }

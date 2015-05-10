@@ -64,6 +64,9 @@ commands:
         description: Unban a player
         usage: /<command> <player>
         aliases: [pardon]
+    unmute:
+        description: Unmute a player
+        usage: /<command> <player>
     warp:
         description: List and teleport to warps
         usage: /<command> <warp>
@@ -76,6 +79,7 @@ permissions:
         default: op
         children:
             lavahub.action: true
+            lavahub.ban: true
             lavahub.clearinventory: true
             lavahub.clearinventory.others: true
             lavahub.delwarp: true
@@ -95,5 +99,7 @@ permissions:
             lavahub.teleport: true
             lavahub.teleport.others: true
             lavahub.tphere: true
+            lavahub.unban: true
+            lavahub.unmute: true
             lavahub.warp: true
             lavahub.weather: true
