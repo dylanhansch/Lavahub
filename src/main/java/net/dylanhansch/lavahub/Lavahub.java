@@ -30,6 +30,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffect;
@@ -70,13 +71,13 @@ public class Lavahub extends JavaPlugin implements Listener {
 
 	public Location getSpawn(){
 		return new Location(
-                getServer().getWorld(getConfig().getString("spawn.world")),
-                getConfig().getDouble("spawn.x"),
-                getConfig().getDouble("spawn.y"),
-                getConfig().getDouble("spawn.z"),
-                (float) getConfig().getDouble("spawn.yaw"),
-                (float) getConfig().getDouble("spawn.pitch")
-            );
+				getServer().getWorld(getConfig().getString("spawn.world")),
+				getConfig().getDouble("spawn.x"),
+				getConfig().getDouble("spawn.y"),
+				getConfig().getDouble("spawn.z"),
+				(float) getConfig().getDouble("spawn.yaw"),
+				(float) getConfig().getDouble("spawn.pitch")
+		);
 	}
 	
 	@EventHandler
@@ -89,21 +90,37 @@ public class Lavahub extends JavaPlugin implements Listener {
 		}else{
 			return false;
 		}
+		
 		if(this.getConfig().getBoolean("spawnonjoin") == true){
 			player.teleport(getSpawn());
 		}else{
 			return false;
 		}
+		
 		if(this.getConfig().getBoolean("hub-features.speedboost") == true){
 			player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 10000000, 2));
 		}else{
 			return false;
 		}
+		
 		if(this.getConfig().getBoolean("hub-features.jumpboost") == true){
 			player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 10000000, 2));
-			
 		}else{
 			return false;
+		}
+		
+		return false;
+	}
+	
+	@EventHandler
+	public boolean onPlayerLogin(PlayerLoginEvent event){
+		Player player = event.getPlayer();
+		boolean banned = getConfig().getBoolean("players." + player.getName() + ".banned");
+		String banreason = getConfig().getString("players." + player.getName() + ".banreason");
+		
+		if(banned == true){
+			//event.getPlayer().kickPlayer(ChatColor.DARK_RED + "Banned: " + ChatColor.RESET + banreason);
+			event.disallow(null, ChatColor.RED + "Banned: " + ChatColor.RESET + banreason + "\n" + "Appeal to dylan@dylanhansch.net");
 		}
 		
 		return false;
@@ -115,31 +132,33 @@ public class Lavahub extends JavaPlugin implements Listener {
 		
 		event.setRespawnLocation(getSpawn());
 		
-        if(this.getConfig().getBoolean("hub-features.speedboost") == true){
-        	Bukkit.getScheduler().scheduleSyncDelayedTask(this, new Runnable(){
-
+		if(this.getConfig().getBoolean("hub-features.speedboost") == true){
+			Bukkit.getScheduler().scheduleSyncDelayedTask(this, new Runnable(){
+				
 				@Override
 				public void run() {
 					player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 10000000, 2));
 				}
-        		
-        	},1 );
-        }else{
-            return false;
-        }
-        if(this.getConfig().getBoolean("hub-features.jumpboost") == true){
-        	Bukkit.getScheduler().scheduleSyncDelayedTask(this, new Runnable(){
+				
+			},1 );
+		}else{
+			return false;
+		}
+		
+		if(this.getConfig().getBoolean("hub-features.jumpboost") == true){
+			Bukkit.getScheduler().scheduleSyncDelayedTask(this, new Runnable(){
 
 				@Override
 				public void run() {
-		            player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 10000000, 2));
+					player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 10000000, 2));
 				}
-        		
+				
         	},1 );
-        }else{
-            return false;
-        }
-        return false;
+		}else{
+			return false;
+		}
+		
+		return false;
 	}
 	
 	@EventHandler
