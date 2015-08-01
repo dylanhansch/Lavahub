@@ -25,9 +25,9 @@ public class MuteCommand implements CommandExecutor{
 				if(player.isOnline()){
 					if(muted == false){
 						plugin.getConfig().set("players."+ player.getName() + ".muted", true);
-		                plugin.saveConfig();
-		                sender.sendMessage(ChatColor.GREEN + player.getName() + " has been muted.");
-		                player.sendMessage(ChatColor.RED + "You have been muted!");
+						plugin.saveConfig();
+						sender.sendMessage(ChatColor.GREEN + player.getName() + " has been muted.");
+						player.sendMessage(ChatColor.RED + "You have been muted!");
 						return true;
 					}else{
 						sender.sendMessage(ChatColor.RED + "Player already muted.");

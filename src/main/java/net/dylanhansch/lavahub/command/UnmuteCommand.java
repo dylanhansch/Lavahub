@@ -25,9 +25,9 @@ public class UnmuteCommand implements CommandExecutor {
 				if(player.isOnline()){
 					if(muted == true){
 						plugin.getConfig().set("players."+ player.getName() + ".muted", false);
-		                plugin.saveConfig();
-		                sender.sendMessage(ChatColor.GREEN + player.getName() + " has been unmuted.");
-		                player.sendMessage(ChatColor.RED + "You have been unmuted!");
+						plugin.saveConfig();
+						sender.sendMessage(ChatColor.GREEN + player.getName() + " has been unmuted.");
+						player.sendMessage(ChatColor.RED + "You have been unmuted!");
 						return true;
 					}else{
 						sender.sendMessage(ChatColor.RED + "Player already unmuted.");
