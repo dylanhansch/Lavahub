@@ -1,8 +1,5 @@
 package net.dylanhansch.lavahub;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
 import net.dylanhansch.lavahub.command.ActionCommand;
 import net.dylanhansch.lavahub.command.BanCommand;
 import net.dylanhansch.lavahub.command.ClearInventoryCommand;
@@ -28,7 +25,6 @@ import net.dylanhansch.lavahub.command.WeatherCommand;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
-import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -41,14 +37,12 @@ import org.bukkit.potion.PotionEffectType;
 
 public class Lavahub extends JavaPlugin implements Listener {
 	
-	public final HashMap<String, ArrayList<Block>> mutedPlayers = new HashMap<>();
-	
 	@Override
-	public void onDisable() {
+	public void onDisable(){
 	}
 	
 	@Override
-	public void onEnable() {
+	public void onEnable(){
 		saveDefaultConfig();
 		getServer().getPluginManager().registerEvents(this, this);
 		getCommand("action").setExecutor(new ActionCommand(this));
@@ -74,7 +68,7 @@ public class Lavahub extends JavaPlugin implements Listener {
 		getCommand("weather").setExecutor(new WeatherCommand(this));
 	}
 
-	public Location getSpawn() {
+	public Location getSpawn(){
 		return new Location(
                 getServer().getWorld(getConfig().getString("spawn.world")),
                 getConfig().getDouble("spawn.x"),
@@ -151,7 +145,9 @@ public class Lavahub extends JavaPlugin implements Listener {
 	@EventHandler
 	public void onPlayerChat(AsyncPlayerChatEvent event){
 		Player player = event.getPlayer();
-		if(mutedPlayers.containsKey(player.getName())){
+		boolean muted = getConfig().getBoolean("players." + player.getName() + ".muted");
+		
+		if(muted == true){
 			try{
 				event.setCancelled(true);
 			}catch(Exception e){

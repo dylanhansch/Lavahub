@@ -18,11 +18,16 @@ public class UnmuteCommand implements CommandExecutor {
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLable, String[] args){
 		@SuppressWarnings("deprecation")
 		Player player = plugin.getServer().getPlayer(args[0]);
+		boolean muted = plugin.getConfig().getBoolean("players." + player.getName() + ".muted");
+		
 		if(sender.hasPermission("lavahub.unmute")){
 			if(args.length == 1){
 				if(player.isOnline()){
-					if(plugin.mutedPlayers.containsKey(player.getName())){
-						plugin.mutedPlayers.remove(player.getName());
+					if(muted == true){
+						plugin.getConfig().set("players."+ player.getName() + ".muted", false);
+		                plugin.saveConfig();
+		                sender.sendMessage(ChatColor.GREEN + player.getName() + " has been unmuted.");
+		                player.sendMessage(ChatColor.RED + "You have been unmuted!");
 						return true;
 					}else{
 						sender.sendMessage(ChatColor.RED + "Player already unmuted.");

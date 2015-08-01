@@ -18,11 +18,16 @@ public class MuteCommand implements CommandExecutor{
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLable, String[] args){
 		@SuppressWarnings("deprecation")
 		Player player = plugin.getServer().getPlayer(args[0]);
+		boolean muted = plugin.getConfig().getBoolean("players." + player.getName() + ".muted");
+		
 		if(sender.hasPermission("lavahub.mute")){
 			if(args.length == 1){
 				if(player.isOnline()){
-					if(!plugin.mutedPlayers.containsKey(player.getName())){
-						plugin.mutedPlayers.put(player.getName(), null);
+					if(muted == false){
+						plugin.getConfig().set("players."+ player.getName() + ".muted", true);
+		                plugin.saveConfig();
+		                sender.sendMessage(ChatColor.GREEN + player.getName() + " has been muted.");
+		                player.sendMessage(ChatColor.RED + "You have been muted!");
 						return true;
 					}else{
 						sender.sendMessage(ChatColor.RED + "Player already muted.");
