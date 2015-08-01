@@ -16,6 +16,10 @@ commands:
         description: Clear player inventory
         usage: /<command> [player]
         aliases: [ci, clear]
+    deafen:
+        description: Deafen a player
+        usage: /<command> <player>
+        aliases: [deaf]
     delwarp:
         description: Delete a warp
         usage: /<command> <warp>
@@ -64,6 +68,10 @@ commands:
         description: Unban a player
         usage: /<command> <player>
         aliases: [pardon]
+    undeafen:
+        description: Undeafen a player
+        usage: /<command> <player>
+        aliases: [undeaf]
     unmute:
         description: Unmute a player
         usage: /<command> <player>

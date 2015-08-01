@@ -1,8 +1,13 @@
 package net.dylanhansch.lavahub;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 import net.dylanhansch.lavahub.command.ActionCommand;
 import net.dylanhansch.lavahub.command.BanCommand;
 import net.dylanhansch.lavahub.command.ClearInventoryCommand;
+import net.dylanhansch.lavahub.command.DeafCommand;
 import net.dylanhansch.lavahub.command.DelwarpCommand;
 import net.dylanhansch.lavahub.command.GamemodeCommand;
 import net.dylanhansch.lavahub.command.HealCommand;
@@ -18,6 +23,7 @@ import net.dylanhansch.lavahub.command.TpCommand;
 import net.dylanhansch.lavahub.command.TimeCommand;
 import net.dylanhansch.lavahub.command.TphereCommand;
 import net.dylanhansch.lavahub.command.UnbanCommand;
+import net.dylanhansch.lavahub.command.UndeafCommand;
 import net.dylanhansch.lavahub.command.UnmuteCommand;
 import net.dylanhansch.lavahub.command.WarpCommand;
 import net.dylanhansch.lavahub.command.WeatherCommand;
@@ -25,6 +31,7 @@ import net.dylanhansch.lavahub.command.WeatherCommand;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
+import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -38,6 +45,8 @@ import org.bukkit.potion.PotionEffectType;
 
 public class Lavahub extends JavaPlugin implements Listener {
 	
+	public final HashMap<String, ArrayList<Block>> deafenedPlayers = new HashMap<>();
+	
 	@Override
 	public void onDisable(){
 	}
@@ -49,6 +58,7 @@ public class Lavahub extends JavaPlugin implements Listener {
 		getCommand("action").setExecutor(new ActionCommand(this));
 		getCommand("ban").setExecutor(new BanCommand(this));
 		getCommand("clearinventory").setExecutor(new ClearInventoryCommand(this));
+		getCommand("deafen").setExecutor(new DeafCommand(this));
 		getCommand("delwarp").setExecutor(new DelwarpCommand(this));
 		getCommand("gamemode").setExecutor(new GamemodeCommand(this));
 		getCommand("heal").setExecutor(new HealCommand(this));
@@ -64,6 +74,7 @@ public class Lavahub extends JavaPlugin implements Listener {
 		getCommand("teleport").setExecutor(new TpCommand(this));
 		getCommand("tphere").setExecutor(new TphereCommand(this));
 		getCommand("unban").setExecutor(new UnbanCommand(this));
+		getCommand("undeafen").setExecutor(new UndeafCommand(this));
 		getCommand("unmute").setExecutor(new UnmuteCommand(this));
 		getCommand("warp").setExecutor(new WarpCommand(this));
 		getCommand("weather").setExecutor(new WeatherCommand(this));
@@ -83,6 +94,7 @@ public class Lavahub extends JavaPlugin implements Listener {
 	@EventHandler
 	public boolean onPlayerJoin(PlayerJoinEvent event){
 		Player player = event.getPlayer();
+		
 		if(this.getConfig().getBoolean("hub-features.resetpotions") == true){
 			for(PotionEffect effect : player.getActivePotionEffects()){
 			    player.removePotionEffect(effect.getType());
@@ -107,6 +119,12 @@ public class Lavahub extends JavaPlugin implements Listener {
 			player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 10000000, 2));
 		}else{
 			return false;
+		}
+		
+		if(this.getConfig().getBoolean("players." + player.getName() + ".deafened") == true){
+			if(!deafenedPlayers.containsKey(player.getName())){
+				this.deafenedPlayers.put(player.getName(), null);
+			}
 		}
 		
 		return false;
@@ -166,6 +184,7 @@ public class Lavahub extends JavaPlugin implements Listener {
 		Player player = event.getPlayer();
 		boolean muted = getConfig().getBoolean("players." + player.getName() + ".muted");
 		
+		// Don't allow muted players to send messages
 		if(muted == true){
 			try{
 				event.setCancelled(true);
@@ -173,6 +192,17 @@ public class Lavahub extends JavaPlugin implements Listener {
 				event.setMessage(null);
 			}
 			player.sendMessage(ChatColor.RED + "You are muted!");
+		}
+		
+		// Don't send to deaf players
+		List<Player> plrs = new ArrayList<Player>();
+		for(Player plr : getServer().getOnlinePlayers()){
+			if(deafenedPlayers.containsKey(plr.getName())){
+				plrs.add(plr);
+			}
+		}
+		for(Player plr : plrs){
+			event.getRecipients().remove(plr);
 		}
 	}
 }
