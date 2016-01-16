@@ -10,3 +10,4 @@ hub-features:
   jumpboost: false
   resetpotions: false
 spawnonjoin: false
+warps: {}
