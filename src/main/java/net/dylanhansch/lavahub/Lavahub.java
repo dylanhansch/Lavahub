@@ -19,6 +19,7 @@ import net.dylanhansch.lavahub.command.RawmsgCommand;
 import net.dylanhansch.lavahub.command.SetSpawnCommand;
 import net.dylanhansch.lavahub.command.SetwarpCommand;
 import net.dylanhansch.lavahub.command.SpawnCommand;
+import net.dylanhansch.lavahub.command.StatsCommand;
 import net.dylanhansch.lavahub.command.TpCommand;
 import net.dylanhansch.lavahub.command.TimeCommand;
 import net.dylanhansch.lavahub.command.TphereCommand;
@@ -27,6 +28,7 @@ import net.dylanhansch.lavahub.command.UndeafCommand;
 import net.dylanhansch.lavahub.command.UnmuteCommand;
 import net.dylanhansch.lavahub.command.WarpCommand;
 import net.dylanhansch.lavahub.command.WeatherCommand;
+import net.dylanhansch.lavahub.utility.GetTPS;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -46,6 +48,14 @@ import org.bukkit.potion.PotionEffectType;
 public class Lavahub extends JavaPlugin implements Listener {
 	
 	public final HashMap<String, ArrayList<Block>> deafenedPlayers = new HashMap<>();
+	
+	// Error messages
+	public final String NO_PERMISSIONS_MSG = ChatColor.DARK_RED + "You do not have permission to execute this command.";
+	public final String TOO_MANY_ARGS = ChatColor.RED + "Too many arguments!";
+	
+	// Variables for StatsCommand
+	public double totalMemory, maxMemory, usedMemory, freeMemory;
+	private long uptime;
 	
 	@Override
 	public void onDisable(){
@@ -70,6 +80,7 @@ public class Lavahub extends JavaPlugin implements Listener {
 		getCommand("setspawn").setExecutor(new SetSpawnCommand(this));
 		getCommand("setwarp").setExecutor(new SetwarpCommand(this));
 		getCommand("spawn").setExecutor(new SpawnCommand(this));
+		getCommand("stats").setExecutor(new StatsCommand(this));
 		getCommand("time").setExecutor(new TimeCommand(this));
 		getCommand("teleport").setExecutor(new TpCommand(this));
 		getCommand("tphere").setExecutor(new TphereCommand(this));
@@ -78,8 +89,11 @@ public class Lavahub extends JavaPlugin implements Listener {
 		getCommand("unmute").setExecutor(new UnmuteCommand(this));
 		getCommand("warp").setExecutor(new WarpCommand(this));
 		getCommand("weather").setExecutor(new WeatherCommand(this));
+		
+		Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(this, new GetTPS(), 100L, 1L);
+		uptime = System.currentTimeMillis();
 	}
-
+	
 	public Location getSpawn(){
 		return new Location(
 				getServer().getWorld(getConfig().getString("spawn.world")),
@@ -204,5 +218,25 @@ public class Lavahub extends JavaPlugin implements Listener {
 		for(Player plr : plrs){
 			event.getRecipients().remove(plr);
 		}
+	}
+	
+	public int[] getCurrentServerUptime(){
+		final int[] i = new int[4];
+		long l = System.currentTimeMillis() - this.uptime;
+		i[3] = (int)(l / 86400000L);
+		l -= i[3] * 86400000L;
+		i[2] = (int)(l / 3600000L);
+		l -= i[2] * 3600000;
+		i[1] = (int)(l / 60000L);
+		l -= i[1] * 60000L;
+		i[0] = (int)(l / 1000L);
+		return i;
+	}
+	
+	public synchronized void updateMemoryStats(){
+		totalMemory = Runtime.getRuntime().totalMemory() / 1048576D;
+		maxMemory = Runtime.getRuntime().maxMemory() / 1048576D;
+		usedMemory = totalMemory - (Runtime.getRuntime().freeMemory() / 1048576D);
+		freeMemory = maxMemory - usedMemory;
 	}
 }

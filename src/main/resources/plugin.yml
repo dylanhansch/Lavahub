@@ -54,6 +54,10 @@ commands:
     spawn:
         description: Teleport to server spawn
         usage: /<command> [player]
+    stats:
+        description: Display server performance statistics
+        usage: /<command>
+        aliases: [lag, mem, gc]
     time:
         description: Set world time
         usage: /<command> <day/noon/night/set> [ticks] [world]
@@ -103,6 +107,7 @@ permissions:
             lavahub.setspawn: true
             lavahub.setwarp: true
             lavahub.spawn: true
+            lavahub.stats: true
             lavahub.time: true
             lavahub.teleport: true
             lavahub.teleport.others: true
