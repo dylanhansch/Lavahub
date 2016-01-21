@@ -12,6 +12,9 @@ commands:
     ban:
         description: Ban a player
         usage: /<command> <player> [reason]
+    clearchat:
+        description: Clears chat
+        usage: /<command> <me/all>
     clearinventory:
         description: Clear player inventory
         usage: /<command> [player]
@@ -92,6 +95,8 @@ permissions:
         children:
             lavahub.action: true
             lavahub.ban: true
+            lavahub.clearchat: true
+            lavahub.clearchat.all: true
             lavahub.clearinventory: true
             lavahub.clearinventory.others: true
             lavahub.delwarp: true

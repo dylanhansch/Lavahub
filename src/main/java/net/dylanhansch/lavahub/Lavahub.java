@@ -6,6 +6,7 @@ import java.util.List;
 
 import net.dylanhansch.lavahub.command.ActionCommand;
 import net.dylanhansch.lavahub.command.BanCommand;
+import net.dylanhansch.lavahub.command.ClearChatCommand;
 import net.dylanhansch.lavahub.command.ClearInventoryCommand;
 import net.dylanhansch.lavahub.command.DeafCommand;
 import net.dylanhansch.lavahub.command.DelwarpCommand;
@@ -52,6 +53,7 @@ public class Lavahub extends JavaPlugin implements Listener {
 	// Error messages
 	public final String NO_PERMISSIONS_MSG = ChatColor.DARK_RED + "You do not have permission to execute this command.";
 	public final String TOO_MANY_ARGS = ChatColor.RED + "Too many arguments!";
+	public final String NOT_ENOUGH_ARGS = ChatColor.RED + "Not enough arguments!";
 	
 	// Variables for StatsCommand
 	public double totalMemory, maxMemory, usedMemory, freeMemory;
@@ -67,6 +69,7 @@ public class Lavahub extends JavaPlugin implements Listener {
 		getServer().getPluginManager().registerEvents(this, this);
 		getCommand("action").setExecutor(new ActionCommand(this));
 		getCommand("ban").setExecutor(new BanCommand(this));
+		getCommand("clearchat").setExecutor(new ClearChatCommand(this));
 		getCommand("clearinventory").setExecutor(new ClearInventoryCommand(this));
 		getCommand("deafen").setExecutor(new DeafCommand(this));
 		getCommand("delwarp").setExecutor(new DelwarpCommand(this));
