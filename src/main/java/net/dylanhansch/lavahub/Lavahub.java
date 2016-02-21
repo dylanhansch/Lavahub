@@ -221,6 +221,12 @@ public class Lavahub extends JavaPlugin implements Listener {
 		for(Player plr : plrs){
 			event.getRecipients().remove(plr);
 		}
+		
+		// Colorize text
+		if(event.getPlayer().hasPermission("lavahub.color")){
+			String colorizedMessage = event.getMessage().replaceAll("&([0-9a-fl-oA-FL-O])", ChatColor.COLOR_CHAR + "$1");
+			event.setMessage(colorizedMessage);
+		}
 	}
 	
 	public int[] getCurrentServerUptime(){

@@ -99,6 +99,7 @@ permissions:
             lavahub.clearchat.all: true
             lavahub.clearinventory: true
             lavahub.clearinventory.others: true
+            lavahub.color: true
             lavahub.delwarp: true
             lavahub.gamemode: true
             lavahub.gamemode.others: true
