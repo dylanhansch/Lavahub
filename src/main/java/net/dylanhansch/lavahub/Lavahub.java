@@ -56,7 +56,7 @@ public class Lavahub extends JavaPlugin implements Listener {
 	public final String NOT_ENOUGH_ARGS = ChatColor.RED + "Not enough arguments!";
 	
 	// Variables for StatsCommand
-	public double totalMemory, maxMemory, usedMemory, freeMemory;
+	public double totalMemory, allocatedMemory, usedMemory, freeMemory;
 	private long uptime;
 	
 	@Override
@@ -237,9 +237,9 @@ public class Lavahub extends JavaPlugin implements Listener {
 	}
 	
 	public synchronized void updateMemoryStats(){
-		totalMemory = Runtime.getRuntime().totalMemory() / 1048576D;
-		maxMemory = Runtime.getRuntime().maxMemory() / 1048576D;
+		totalMemory = Runtime.getRuntime().maxMemory() / 1048576D;
+		allocatedMemory = Runtime.getRuntime().totalMemory() / 1048576D;
 		usedMemory = totalMemory - (Runtime.getRuntime().freeMemory() / 1048576D);
-		freeMemory = maxMemory - usedMemory;
+		freeMemory = allocatedMemory - usedMemory;
 	}
 }

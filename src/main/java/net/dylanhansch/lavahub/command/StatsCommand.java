@@ -31,7 +31,7 @@ public class StatsCommand implements CommandExecutor {
 						uptime[1] + " minute(s), and " + uptime[0] + " second(s)");
 				sender.sendMessage(ChatColor.GOLD + "TPS: " + ChatColor.GREEN + String.format("%.2f", GetTPS.getTPS()));
 				sender.sendMessage(ChatColor.GOLD + "Total memory: " + ChatColor.GREEN + String.format("%.2f", plugin.totalMemory) + " MB");
-				sender.sendMessage(ChatColor.GOLD + "Allocated memory: " + ChatColor.GREEN + String.format("%.2f", plugin.maxMemory) + " MB");
+				sender.sendMessage(ChatColor.GOLD + "Allocated memory: " + ChatColor.GREEN + String.format("%.2f", plugin.allocatedMemory) + " MB");
 				sender.sendMessage(ChatColor.GOLD + "Free memory: " + ChatColor.GREEN + String.format("%.2f", plugin.freeMemory) + " MB");
 				return true;
 			}
