@@ -245,7 +245,6 @@ public class Lavahub extends JavaPlugin implements Listener {
 	public synchronized void updateMemoryStats(){
 		totalMemory = Runtime.getRuntime().maxMemory() / 1048576D;
 		allocatedMemory = Runtime.getRuntime().totalMemory() / 1048576D;
-		usedMemory = totalMemory - (Runtime.getRuntime().freeMemory() / 1048576D);
-		freeMemory = allocatedMemory - usedMemory;
+		freeMemory = Runtime.getRuntime().freeMemory() / 1048576D;
 	}
 }
