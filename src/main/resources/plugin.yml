@@ -1,7 +1,7 @@
 main: ${main.class}
 name: ${project.name}
 version: ${project.version}
-description: Master bukkit plugin for the Lavahub Minecraft Server.
+description: Bukkit plugin for the Lavahub Minecraft Server containing additions and enhancements
 author: Dylan Hansch
 website: https://dylanhansch.net
 commands:
@@ -9,68 +9,22 @@ commands:
         description: Send action message
         usage: /<command> <message>
         aliases: [me]
-    ban:
-        description: Ban a player
-        usage: /<command> <player> [reason]
     clearchat:
         description: Clears chat
         usage: /<command> <me/all>
-    clearinventory:
-        description: Clear player inventory
-        usage: /<command> [player]
-        aliases: [ci, clear]
     deafen:
         description: Deafen a player
         usage: /<command> <player>
         aliases: [deaf]
-    delwarp:
-        description: Delete a warp
-        usage: /<command> <warp>
-    gamemode:
-        description: Change player gamemode
-        usage: /<command> <mode> [player]
-        aliases: [gm]
-    heal:
-        description: Heal player
-        usage: /<command> [player]
-    kick:
-        description: Kick player
-        usage: /<command> <player> [reason]
     lavahub:
         description: Reload Lavahub configuration from disk
         usage: /<command>
     mute:
         description: Mute a player
         usage: /<command> <player>
-    player:
-        description: View information about a player
-        usage: /<command> <player>
     rawmsg:
         description: Send raw message
         usage: /<command> <message>
-    setspawn:
-        description: Set server spawn
-        usage: /<command>
-    setwarp:
-        description: Set a warp
-        usage: /<command> <name>
-    spawn:
-        description: Teleport to server spawn
-        usage: /<command> [player]
-    time:
-        description: Set world time
-        usage: /<command> <day/noon/night/set> [ticks] [world]
-    teleport:
-        description: Teleport to a player
-        usage: /<command> <player> [player]
-        aliases: [tp]
-    tphere:
-        description: Teleport a player to you
-        usage: /<command> <player>
-    unban:
-        description: Unban a player
-        usage: /<command> <player>
-        aliases: [pardon]
     undeafen:
         description: Undeafen a player
         usage: /<command> <player>
@@ -78,42 +32,17 @@ commands:
     unmute:
         description: Unmute a player
         usage: /<command> <player>
-    warp:
-        description: List and teleport to warps
-        usage: /<command> <warp>
-    weather:
-        description: Set weather in a world
-        usage: /<command> <clear/sun/rain/storm/thunder> [world]
 permissions:
     lavahub.*:
         description: Lavahub Admin
         default: op
         children:
             lavahub.action: true
-            lavahub.ban: true
             lavahub.clearchat: true
             lavahub.clearchat.all: true
-            lavahub.clearinventory: true
-            lavahub.clearinventory.others: true
-            lavahub.color: true
-            lavahub.delwarp: true
-            lavahub.gamemode: true
-            lavahub.gamemode.others: true
-            lavahub.heal: true
-            lavahub.heal.others: true
-            lavahub.kick: true
+            lavahub.deafen: true
             lavahub.reload: true
             lavahub.mute: true
-            lavahub.player: true
             lavahub.rawmsg: true
-            lavahub.setspawn: true
-            lavahub.setwarp: true
-            lavahub.spawn: true
-            lavahub.time: true
-            lavahub.teleport: true
-            lavahub.teleport.others: true
-            lavahub.tphere: true
-            lavahub.unban: true
+            lavahub.undeafen: true
             lavahub.unmute: true
-            lavahub.warp: true
-            lavahub.weather: true

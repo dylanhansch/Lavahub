@@ -1,4 +1,4 @@
 Lavahub
 =======
 
-Master bukkit plugin for the Lavahub Minecraft Server
+Bukkit plugin for the Lavahub Minecraft Server containing additions and enhancements
