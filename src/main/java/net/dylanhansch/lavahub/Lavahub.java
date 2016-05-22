@@ -4,32 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import net.dylanhansch.lavahub.command.ActionCommand;
-import net.dylanhansch.lavahub.command.BanCommand;
-import net.dylanhansch.lavahub.command.ClearChatCommand;
-import net.dylanhansch.lavahub.command.ClearInventoryCommand;
-import net.dylanhansch.lavahub.command.DeafCommand;
-import net.dylanhansch.lavahub.command.DelwarpCommand;
-import net.dylanhansch.lavahub.command.GamemodeCommand;
-import net.dylanhansch.lavahub.command.HealCommand;
-import net.dylanhansch.lavahub.command.KickCommand;
-import net.dylanhansch.lavahub.command.LavahubCommand;
-import net.dylanhansch.lavahub.command.MuteCommand;
-import net.dylanhansch.lavahub.command.PlayerCommand;
-import net.dylanhansch.lavahub.command.RawmsgCommand;
-import net.dylanhansch.lavahub.command.SetSpawnCommand;
-import net.dylanhansch.lavahub.command.SetwarpCommand;
-import net.dylanhansch.lavahub.command.SpawnCommand;
-import net.dylanhansch.lavahub.command.StatsCommand;
-import net.dylanhansch.lavahub.command.TpCommand;
-import net.dylanhansch.lavahub.command.TimeCommand;
-import net.dylanhansch.lavahub.command.TphereCommand;
-import net.dylanhansch.lavahub.command.UnbanCommand;
-import net.dylanhansch.lavahub.command.UndeafCommand;
-import net.dylanhansch.lavahub.command.UnmuteCommand;
-import net.dylanhansch.lavahub.command.WarpCommand;
-import net.dylanhansch.lavahub.command.WeatherCommand;
-import net.dylanhansch.lavahub.utility.GetTPS;
+import net.dylanhansch.lavahub.command.*;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -55,10 +30,6 @@ public class Lavahub extends JavaPlugin implements Listener {
 	public final String TOO_MANY_ARGS = ChatColor.RED + "Too many arguments!";
 	public final String NOT_ENOUGH_ARGS = ChatColor.RED + "Not enough arguments!";
 	
-	// Variables for StatsCommand
-	public double totalMemory, allocatedMemory, usedMemory, freeMemory;
-	private long uptime;
-	
 	@Override
 	public void onDisable(){
 	}
@@ -83,7 +54,6 @@ public class Lavahub extends JavaPlugin implements Listener {
 		getCommand("setspawn").setExecutor(new SetSpawnCommand(this));
 		getCommand("setwarp").setExecutor(new SetwarpCommand(this));
 		getCommand("spawn").setExecutor(new SpawnCommand(this));
-		getCommand("stats").setExecutor(new StatsCommand(this));
 		getCommand("time").setExecutor(new TimeCommand(this));
 		getCommand("teleport").setExecutor(new TpCommand(this));
 		getCommand("tphere").setExecutor(new TphereCommand(this));
@@ -92,9 +62,6 @@ public class Lavahub extends JavaPlugin implements Listener {
 		getCommand("unmute").setExecutor(new UnmuteCommand(this));
 		getCommand("warp").setExecutor(new WarpCommand(this));
 		getCommand("weather").setExecutor(new WeatherCommand(this));
-		
-		Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(this, new GetTPS(), 100L, 1L);
-		uptime = System.currentTimeMillis();
 	}
 	
 	public Location getSpawn(){
@@ -227,24 +194,5 @@ public class Lavahub extends JavaPlugin implements Listener {
 			String colorizedMessage = event.getMessage().replaceAll("&([0-9a-fl-oA-FL-O])", ChatColor.COLOR_CHAR + "$1");
 			event.setMessage(colorizedMessage);
 		}
-	}
-	
-	public int[] getCurrentServerUptime(){
-		final int[] i = new int[4];
-		long l = System.currentTimeMillis() - this.uptime;
-		i[3] = (int)(l / 86400000L);
-		l -= i[3] * 86400000L;
-		i[2] = (int)(l / 3600000L);
-		l -= i[2] * 3600000;
-		i[1] = (int)(l / 60000L);
-		l -= i[1] * 60000L;
-		i[0] = (int)(l / 1000L);
-		return i;
-	}
-	
-	public synchronized void updateMemoryStats(){
-		totalMemory = Runtime.getRuntime().maxMemory() / 1048576D;
-		allocatedMemory = Runtime.getRuntime().totalMemory() / 1048576D;
-		freeMemory = Runtime.getRuntime().freeMemory() / 1048576D;
 	}
 }
