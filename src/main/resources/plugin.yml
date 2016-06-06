@@ -1,9 +1,9 @@
 main: ${main.class}
 name: ${project.name}
 version: ${project.version}
-description: Bukkit plugin for the Lavahub Minecraft Server containing additions and enhancements
+description: ${project.description}
 author: Dylan Hansch
-website: https://dylanhansch.net
+website: ${project.url}
 commands:
     action:
         description: Send action message
